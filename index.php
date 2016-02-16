@@ -16,6 +16,7 @@
 
 <body>
 <?php require_once "inc/header.php"; ?>
+<?php require_once "inc/loginBox.php"; ?>
 
 <div id="mainLeft" class="main">
 
@@ -58,7 +59,12 @@
     <div class="eventWrap">
         <div class="event">
             <div class="eventSherpa">
-                Link of Origin
+                <div class="eventConsole">
+                    <div class="eventX1 consoleMini">
+                        X1
+                    </div>
+                </div>
+                <p>Link of Origin</p>
             </div>
             <div class="eventActivity">
                 Vault of Glass
@@ -76,15 +82,17 @@
                 </p>
             </div>
         </div>
-        <div class="eventConsole eventX1">
-            X1
-        </div>
     </div>
 
     <div class="eventWrap">
         <div class="event">
             <div class="eventSherpa">
-                Link of Origin
+                <div class="eventConsole">
+                    <div class="eventPS4 consoleMini">
+                        PS4
+                    </div>
+                </div>
+                <p>Link of Origin</p>
             </div>
             <div class="eventActivity">
                 Prison of Elders
@@ -106,18 +114,20 @@
                 </p>
             </div>
         </div>
-        <div class="eventConsole eventPS4">
-            PS4
-        </div>
     </div>
 
     <div class="eventWrap">
         <div class="event">
             <div class="eventSherpa">
-                Link of Origin
+                <div class="eventConsole">
+                    <div class="eventX360 consoleMini">
+                        X360
+                    </div>
+                </div>
+                <p>Link of Origin</p>
             </div>
             <div class="eventActivity">
-                Crota's End 
+                Crota's End
             </div>
             <div class="eventDateTime">
                 ABC. 99 - 99:99 ZM
@@ -135,9 +145,6 @@
                     vestibulum eget sem. Etiam a ipsum metus.
                 </p>
             </div>
-        </div>
-        <div class="eventConsole eventX360">
-            X360
         </div>
     </div>
 

@@ -1,0 +1,119 @@
+
+#detailBody {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    background-color: #607D8B;
+}
+
+#sherpaTitle {
+    flex-flow: row;
+    width: 100%;
+    height: 100px;
+    background-color: #78909C;
+    border-bottom: 3px solid #263238;
+    text-align: center;
+    clear: both;
+}
+
+#sherpaName {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-60%);
+}
+
+#detailContent {
+    display: flex;
+    flex: auto;
+    flex-flow: row;
+}
+
+#detailLeft {
+    flex: auto;
+    width: 25%;
+    border-right: 3px solid #263238;
+}
+
+#aboutSherpa {
+    height: 40px;
+    border-bottom: 2px solid #37474F;
+}
+
+#aboutSherpa > h3 {
+    margin: 0;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#sherpaInfo {
+    padding: 0 20px;
+    overflow-y: auto;
+}
+
+#detailMiddle {
+    flex: auto;
+    width: 50%;
+    border-right: 3px solid #263238;
+}
+
+#detailMiddle > div > h3 {
+    text-align: center;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#activity {
+    width: 50%;
+    height: 40px;
+    float: left;
+    border-right: 2px solid #37474F;
+    border-bottom: 2px solid #37474F;
+}
+
+#dateTime {
+    width: 50%;
+    height: 40px;
+    float: left;
+    border-bottom: 2px solid #37474F;
+}
+
+#eventInfo {
+    float: left;
+    clear: both;
+    padding: 0 20px;
+    overflow-y: auto;
+}
+
+#detailRight {
+    flex: auto;
+    width: 25%;
+}
+
+#guardians {
+    height: 40px;
+    border-bottom: 2px solid #37474F;
+}
+
+#guardians > h3 {
+    margin: 0;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#guardianList > p {
+    margin: 0;
+    text-align: center;
+    border-bottom: 2px solid #455A64;
+    padding: 5px 0;
+}
+
+

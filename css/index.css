@@ -1,7 +1,7 @@
 
 .main {
     width: 50%;
-    height: 80%;
+    height: 85%;
 }
 
 #mainLeft {
@@ -12,9 +12,9 @@
 
 #mainRight {
     float: right;
-    background-color: #B0BEC5;
+    background-color: #607D8B;
     text-align: center;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 /* Main Left */
@@ -35,7 +35,7 @@
 
 /* Consoles */
 #consoles {
-    background-color: #CFD8DC;
+    background-color: #B0BEC5;
 }
 
 .console {
@@ -89,7 +89,7 @@
 
 /* Activities */
 #activities {
-    background-color: #B0BEC5;
+    background-color: #90A4AE;
 }
 
 .activity {
@@ -123,7 +123,7 @@
 
 /* Date/Time */
 #dateTime {
-    background-color: #90A4AE;
+    background-color: #78909C;
     color: #ECEFF1;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -154,86 +154,37 @@
 /* Main Right */
 
 .eventWrap {
-    display: inline-block;
-    width: 90%;
-    margin: 30px auto;
-    color: #ECEFF1;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .event {
-    display: inline-block;
-    float: right;
-    width: 90%;
-    background-color: #607D8B;
-    border: 1px solid black;
-    border-radius: 7px;
 }
 
 .eventConsole {
-    display: inline-block;
-    float: right;
-    padding: 8px 7px;
-    transform: translateY(10px);
-    border: 1px solid black;
-    border-right: none;
-    border-radius: 8px 0 0 8px;
 }
 
 .eventX360 {
-    background-color: #0A540A;
 }
 
 .eventX1 {
-    background-color: #107C10;
 }
 
 .eventPS3 {
-    background-color: #003087;
 }
 
 .eventPS4 {
-    background-color: #0072CE;
 }
 
 .eventSherpa {
-    width: 100%;
-    padding: 10px 0;
-    float: left;
-    clear: both;
-    text-align: center;
-    font-size: 17px;
-    font-weight: bold;
-    border-bottom: 2px solid #37474F;
 }
 
 .eventActivity {
-    width: 50%;
-    padding: 10px 0;
-    float: left;
-    clear: left;
-    text-align: center;
-    border-right: 1px solid #37474F;
-    border-bottom: 2px solid #37474F;
 }
 
 .eventDateTime {
-    width: 50%;
-    padding: 10px 0;
-    float: left;
-    clear: right;
-    text-align: center;
-    border-left: 1px solid #37474F;
-    border-bottom: 2px solid #37474F;
 }
 
 .eventOther {
-    width: 100%;
-    float: left;
 }
 
 .eventOther > p {
-    margin: 0;
-    text-align: left;
-    padding: 10px 15px;
 }
