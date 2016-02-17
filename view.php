@@ -17,8 +17,10 @@
 <?php require_once "inc/header.php"; ?>
 <?php require_once "inc/loginBox.php"; ?>
 
-<div id="userEvents">
-    Link of Origin's Events
+<div class="h2Wrap">
+    <h2>
+        Link of Origin's Events
+    </h2>
 </div>
 
 <div id="viewContent">

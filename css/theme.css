@@ -10,6 +10,29 @@ body {
     color: #ECEFF1;
 }
 
+h2 {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-60%);
+}
+
+.h2Wrap {
+    width: 100%;
+    height: 100px;
+    background-color: #78909C;
+    border-bottom: 3px solid #263238;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0; 
+}
+
 button:focus {
     outline: none;
 }
@@ -156,11 +179,104 @@ footer > * {
     font-family: Tahoma,Geneva,sans-serif;
 }
 
+/* Consoles */
+.console {
+    border: 1px solid black;
+    margin: 0;
+    float: left;
+    width: 90px;
+    height: 70px;
+    color: #ECEFF1;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#ps3 {
+    background-color: #003087;
+    border-top-left-radius: 10px;
+}
+
+#ps3:hover {
+    background-color: #002569;
+}
+
+#x360 {
+    background-color: #0A540A;
+    border-top-right-radius: 10px;
+}
+
+#x360:hover {
+    background-color: #0A450A;
+}
+
+#ps4 {
+    background-color: #0072CE;
+    border-bottom-left-radius: 10px;
+    clear: left;
+}
+
+#ps4:hover {
+    background-color: #0060AD;
+}
+
+#x1 {
+    background-color: #107C10;
+    border-bottom-right-radius: 10px;
+}
+
+#x1:hover {
+    background-color: #0A6B0A;
+}
+
+/* Activity */
+.activity {
+    border: 1px solid black;
+    background-color: #263238;
+    border-radius: 10px;
+    margin: 10px;
+    width: 100px;
+    height: 70px;
+    color: #ECEFF1;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#vog {
+    /* background images for these later */
+}
+
+#crota {
+
+}
+
+#prison {
+
+}
+
+#kingsFall {
+
+}
+
+/* Date/Time */
+.dateTime {
+    text-align: center;
+    background-color: #607D8B;
+    padding: 8px 15px;
+    border: 1px solid black;
+    float: left;
+    margin: 30px;
+}
+
+.dateTime > input {
+    margin-top: 5px;
+}
+
 /* Events */
 .eventWrap {
     width: 90%;
     margin: 30px auto;
-    cursor: pointer;
 }
 
 .event {
@@ -168,6 +284,7 @@ footer > * {
     background-color: #455A64;
     border: 1px solid black;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .eventSherpa {

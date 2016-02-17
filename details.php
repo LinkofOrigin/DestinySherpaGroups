@@ -17,14 +17,16 @@
 <?php require_once "inc/header.php"; ?>
 <?php require_once "inc/loginBox.php"; ?>
 
+<div class="h2Wrap">
+    <h2>
+        Link of Origin
+    </h2>
+</div>
+
 <div id="detailBody">
 
-    <div id="sherpaTitle">
-        <p id="sherpaName">Link of Origin</p>
-    </div>
-
     <div id="detailContent">
-        
+
         <div id="detailLeft">
             <div id="aboutSherpa">
                 <h3>About - Link of Origin</h3>
@@ -69,7 +71,7 @@
                 <p id="guard6">- Open -</p>
             </div>
         </div>
-        
+
     </div>
 
 </div>

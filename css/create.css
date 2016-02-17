@@ -1,0 +1,67 @@
+
+#createContents {
+    display: inline-block;
+    width: 100%;
+    padding: 30px;
+    background-color: #607D8B;
+}
+
+.wrapper {
+    width: 33.3%;
+    float: left;
+    text-align: center;    
+}
+
+#consoleButtonWrap {
+    display: inline-block;
+    margin: 20px auto 0 auto ;
+}
+
+
+
+#activityWrap > div {
+    margin-top: 20px;
+}
+
+#dayTimeWrap {
+    width: 33.3%;
+    float: left;
+    padding: 0 30px;
+}
+
+.dateTime {
+    display: inline-block;
+}
+
+.dateTimeWrapper {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+#otherWrap {
+    padding-top: 20px;
+    text-align: center;
+    clear: both;
+}
+
+#createOther {
+    width: 500px;
+    height: 200px;
+    margin-top: 10px;
+}
+
+#createSubmit {
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #37474F;
+    color: #ECEFF1;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 15px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}

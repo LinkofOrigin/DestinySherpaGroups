@@ -1,13 +1,4 @@
 
-#userEvents {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    padding: 20px 0;
-    background-color: #78909C;
-    border-bottom: 5px solid #263238;
-}
-
 #viewContent {
     display: inline-block;
     text-align: center;

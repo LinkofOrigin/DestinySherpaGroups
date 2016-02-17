@@ -40,14 +40,14 @@
 
     <div id="dateTime">
         <div class="filterWrap">
-            <div id="date" class="dateTime">
-                Date<br>
-                <input type="date">
+            <div class="dateTime">
+                <h3>Date</h3>
+                <input title="Filter Date" type="date">
             </div>
 
-            <div id="time" class="dateTime">
-                Time<br>
-                <input type="time">
+            <div class="dateTime">
+                <h3>Time</h3>
+                <input title="Filter Date" type="time">
             </div>
         </div>
     </div>
