@@ -15,8 +15,8 @@
 </head>
 
 <body>
-<?php require_once "inc/header.php"; ?>
 <?php require_once "inc/loginBox.php"; ?>
+<?php require_once "inc/header.php"; ?>
 
 <div id="mainLeft" class="main">
 
@@ -56,7 +56,7 @@
 
 <div id="mainRight" class="main">
 
-    <div class="eventWrap">
+    <a class="eventWrap" href="details.php?id=1">
         <div class="event">
             <div class="eventSherpa">
                 <div class="eventConsole">
@@ -82,9 +82,9 @@
                 </p>
             </div>
         </div>
-    </div>
+    </a>
 
-    <div class="eventWrap">
+    <a class="eventWrap" href="details.php?id=2">
         <div class="event">
             <div class="eventSherpa">
                 <div class="eventConsole">
@@ -114,9 +114,9 @@
                 </p>
             </div>
         </div>
-    </div>
+    </a>
 
-    <div class="eventWrap">
+    <a class="eventWrap" href="details.php?id=3">
         <div class="event">
             <div class="eventSherpa">
                 <div class="eventConsole">
@@ -146,7 +146,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </a>
 
 </div>
 

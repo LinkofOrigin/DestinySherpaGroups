@@ -1,29 +1,29 @@
 
 var hidden = true;
-function toggleLoginBox() {
+function toggleloginBack() {
     if(hidden) {
-        showLoginBox();
+        showloginBack();
     } else {
-        hideLoginBox();
+        hideloginBack();
     }
 }
 
-function showLoginBox() {
-    var loginBox = $("#loginBox");
-    loginBox.css({display:"block"});
-    $("body > *").not("body > header, #loginBox, #loginBox *").each(function() {
-        $(this).css({opacity: 0.4});
-    });
+function showloginBack() {
+    $("#loginBack").css({display:"block"});
+    $("#loginBox").css({display:"block"});
+    //$("body > *").not("body > header, #loginBack, #loginBack *").each(function() {
+    //    $(this).css({opacity: 0.4});
+    //});
     hidden = false;
 }
 
-function hideLoginBox() {
-    var loginBox = $("#loginBox");
-    loginBox.css({display:"none"});
-    $("*").each(function() {
-        $(this).css({opacity: 1.0});
-    });
+function hideloginBack() {
+    $("#loginBack").css({display:"none"});
+    $("#loginBox").css({display:"none"});
+    //$("*").each(function() {
+    //    $(this).css({opacity: 1.0});
+    //});
     hidden = true;
 }
 
-// TODO: Find way to click on page to hide loginBox
+// TODO: Find way to click on page to hide loginBack

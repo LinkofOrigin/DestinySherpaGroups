@@ -2,8 +2,8 @@
 
 <footer>
     <p id="disclaimer">Disclaimer: I, Jesse Rupe, am not affiliated with or endorsed by Bungie.</p>
-    <div id="redditLink" onclick="window.open('https://www.reddit.com/r/DestinySherpa', '_blank');">
+    <a id="redditLink" href="https://www.reddit.com/r/DestinySherpa">
         <p>Visit the home of the Destiny Sherpa community:</p>
         <p id="sherpaReddit">r/DestinySherpa</p>
-    </div>
+    </a>
 </footer>
