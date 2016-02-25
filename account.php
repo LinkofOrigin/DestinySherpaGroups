@@ -47,15 +47,15 @@
             <div id="passwordWrap">
                 <label for="accountCurrPass">
                     Current Password<br>
-                    <input id="accountCurrPass" name="accountCurrPass" title="Your current password">
+                    <input id="accountCurrPass" name="accountCurrPass" type="password" title="Your current password">
                 </label>
                 <label for="accountNewPass1">
                     New Password<br>
-                    <input id="accountNewPass1" name="accountNewPass1" title="Your new desired password">
+                    <input id="accountNewPass1" name="accountNewPass1" type="password" title="Your new desired password">
                 </label>
                 <label for="accountNewPass2">
                     New Password again<br>
-                    <input id="accountNewPass2" name="accountNewPass2" title="Please retype your desired password">
+                    <input id="accountNewPass2" name="accountNewPass2" type="password" title="Please retype your desired password">
                 </label>
             </div>
 
