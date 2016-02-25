@@ -6,7 +6,7 @@
 
 #mainLeft {
     float: left;
-    background-color: #546E7A;
+    background-color: #90A4AE;
     border-right: 3px solid #37474F;
 }
 
@@ -35,15 +35,15 @@
 
 /* Consoles */
 #consoles {
-    background-color: #B0BEC5;
+    border-bottom: 3px solid #455A64;
 }
 
 /* Activities */
 #activities {
-    background-color: #90A4AE;
+    border-bottom: 3px solid #455A64;
+    overflow-y: auto;
 }
 
 /* Date/Time */
 #dateTime {
-    background-color: #78909C;
 }

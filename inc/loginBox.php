@@ -5,7 +5,7 @@
 <div id="loginBox">
 	
 	<div id="existingUser">
-		<h2>Log In</h2>
+		<h2 id="loginH2">Log In</h2>
 		<form id="existUserForm" name="existUserForm" action="">
 			<label for="loginUsername">Username
 				<input name="loginUsername" id="loginUsername" type="text" title="Username">

@@ -10,11 +10,12 @@ body {
     color: #ECEFF1;
 }
 
-h1 {
+#headerTitle {
     color: #ECEFF1;
     font-size: 28px;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 800;
+    text-decoration: none;
     cursor: pointer;
     /* position */
     float: left;
@@ -39,10 +40,14 @@ h2 {
     border-bottom: 3px solid #263238;
 }
 
+.h2Wrap > h2 {
+    line-height: 100px;
+}
+
 h3 {
     font-size: 25px;
     font-weight: bold;
-    margin: 0; 
+    margin: 0;
 }
 
 button:focus {

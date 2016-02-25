@@ -14,8 +14,8 @@
 
 </head>
 <body>
-<?php require_once "inc/header.php"; ?>
 <?php require_once "inc/loginBox.php"; ?>
+<?php require_once "inc/header.php"; ?>
 
 <div class="h2Wrap">
     <h2>
