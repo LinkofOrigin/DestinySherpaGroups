@@ -2,9 +2,9 @@
 #accountContents {
     display: inline-block;
     width: 100%;
-    height: 70%;
     padding: 30px;
     background-color: #607D8B;
+    height: 60%;
 }
 
 h4 {
