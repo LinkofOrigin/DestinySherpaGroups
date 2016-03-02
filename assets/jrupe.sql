@@ -3,7 +3,11 @@ create table users (
 	username varchar(64) not null,
 	password varchar(64) not null,
 	console varchar(4) not null,
+<<<<<<< HEAD
 	about varchar(255)
+=======
+	about varchar(256)
+>>>>>>> 8d0a024426c1c9de4181ecab563dce759206b404
 );
 
 create table events (
