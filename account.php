@@ -1,6 +1,27 @@
 <?php
 
+require_once "Dao.php";
+require_once "User.php";
+
+if(!isset($_COOKIE["dsg_login"])) {
+    header("Location: index.php");
+}
+
 $here = "account.php";
+$userCookie = json_decode($_COOKIE["dsg_login"], true);
+$user = new User($userCookie["username"]);
+$user->refresh();
+
+$dao = new Dao();
+$userData = $dao->getUserByName($userCookie["username"]);
+
+
+echo "<pre>". print_r($userData, 1) . "</pre>";
+
+$X1 = $userData["console"] === "X1" ? "active" : "";
+$X360 = $userData["console"] === "X360" ? "active" : "";
+$PS3 = $userData["console"] === "PS3" ? "active" : "";
+$PS4 = $userData["console"] === "PS4" ? "active" : "";
 
 ?>
 
@@ -21,27 +42,27 @@ $here = "account.php";
 
 <div class="h2Wrap">
     <h2>
-        Link of Origin's Account Info
+        <?php echo $userData["username"]; ?>'s Account Info
     </h2>
 </div>
 
 <div id="accountContents">
-    <form id="accountForm" name="accountForm" action="">
+    <form id="accountForm" name="accountForm" action="accountEdit.php">
 
         <div id="left" class="column">
             <h3>Default Console</h3>
             <div id="consoleButtonWrap">
-                <button type="button" id="ps3" class="console" onclick="">PS3</button>
-                <button type="button" id="x360" class="console" onclick="">X360</button>
-                <button type="button" id="ps4" class="console" onclick="">PS4</button>
-                <button type="button" id="x1" class="console" onclick="">X1</button>
+                <button type="button" id="ps3" class="console <?php echo $PS3; ?>" onclick="activateConsole(this);">PS3</button>
+                <button type="button" id="x360" class="console <?php echo $X360; ?>" onclick="activateConsole(this);">X360</button>
+                <button type="button" id="ps4" class="console <?php echo $PS4; ?>" onclick="activateConsole(this);">PS4</button>
+                <button type="button" id="x1" class="console <?php echo $X1; ?>" onclick="activateConsole(this);">X1</button>
             </div>
-            <input type="hidden" name="accountConsole" value="">
+            <input type="hidden" name="accountConsole" id="accountConsole" value="<?php echo $userData["console"]; ?>">
         </div>
 
         <div id="middle" class="column">
             <h3>Info about yourself</h3>
-            <textarea id="accountSelf" name="accountSelf" title="Share a little about yourself"></textarea>
+            <textarea id="accountAbout" name="accountSelf" title="Share a little about yourself"><?php echo $userData["about"]; ?></textarea>
         </div>
 
         <div id="right" class="column">

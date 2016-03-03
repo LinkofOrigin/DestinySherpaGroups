@@ -22,10 +22,12 @@ h4 {
     margin-top: 20px;
 }
 
-#accountSelf {
+#accountAbout {
     width: 400px;
     height: 200px;
+    max-height: 400px;
     margin-top: 20px;
+    resize: vertical;
 }
 
 #right {

@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+date_default_timezone_set(@date_default_timezone_get());
+
 require_once "Dao.php";
 
 class User {
@@ -8,7 +11,7 @@ class User {
     private $password;
     private $dao;
 
-    public function __construct($username, $password) {
+    public function __construct($username, $password="") {
         $this->username = $username;
         $this->password = $password;
         $this->dao = new Dao();
@@ -19,28 +22,32 @@ class User {
             $this->dao->createUser($this->username, $this->password);
             return true;
         } else {
-            // user already exists!
-            return false;
+            return false; // user already exists!
         }
     }
 
     public function login() {
-        $userResult = $this->dao->getUserByName($this->username);
-        echo "<pre>". print_r($userResult, 1) . "</pre>";
-        if (!empty($userResult) && password_verify($this->password, $userResult["password"])) {
+        if ($this->verify()) {
             // user verified, now login
-            setcookie("dsg_login", $this, time() + 60 ** 60 * 24 * 7); // active for one week
+            setcookie("dsg_login", json_encode(array("username"=>$this->username), time() + 60 ** 60 * 24)); // active for 24 hours
             return true;
         } else {
-            // user not found
-            echo password_verify($this->password, $userResult["password"]) ? "true" : "false" . "<br>";
-            echo $this->password . "<br>";
-            echo $userResult["password"] . "<br>";
+            return false; // user not found
+        }
+    }
+    
+    public function verify() {
+        $userResult = $this->dao->getUserByName($this->username);
+        if(!empty($userResult) && password_verify($this->password, $userResult["password"])) {
+            return true; // user found
+        } else {
+            // user doesn't exist or not verified
+            header("Location: index.php");
             return false;
         }
     }
     
     public function refresh() {
-        setcookie("dsg_login", $this, time() + 60 ** 60 * 24 * 7);
+        setcookie("dsg_login", json_encode(array("username"=>$this->username)), time() + 60 ** 60 * 24); // refresh for 24 hours
     }
 }

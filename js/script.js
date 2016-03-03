@@ -1,7 +1,6 @@
-
 var hidden = true;
 function toggleloginBack() {
-    if(hidden) {
+    if (hidden) {
         showloginBack();
     } else {
         hideloginBack();
@@ -9,8 +8,8 @@ function toggleloginBack() {
 }
 
 function showloginBack() {
-    $("#loginBack").css({display:"block"});
-    $("#loginBox").css({display:"block"});
+    $("#loginBack").css({display: "block"});
+    $("#loginBox").css({display: "block"});
     //$("body > *").not("body > header, #loginBack, #loginBack *").each(function() {
     //    $(this).css({opacity: 0.4});
     //});
@@ -18,8 +17,8 @@ function showloginBack() {
 }
 
 function hideloginBack() {
-    $("#loginBack").css({display:"none"});
-    $("#loginBox").css({display:"none"});
+    $("#loginBack").css({display: "none"});
+    $("#loginBox").css({display: "none"});
     //$("*").each(function() {
     //    $(this).css({opacity: 1.0});
     //});
@@ -27,9 +26,18 @@ function hideloginBack() {
 }
 
 function passwordCheck() {
-    if($("#newPassword1").val() === $("#newPassword2").val()) {
+    if ($("#newPassword1").val() === $("#newPassword2").val()) {
         $("#newUserForm").submit();
     } else {
         // let user know passwords don't match
     }
+}
+
+function activateConsole(consoleButton) {
+    $(".console").each(function () {
+        $(this).removeClass("active");
+    });
+    $(consoleButton).addClass("active");
+    $("#accountConsole").val($(consoleButton).text());
+    console.log($("#accountConsole").val());
 }

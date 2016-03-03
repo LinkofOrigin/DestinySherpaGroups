@@ -70,7 +70,7 @@ class Dao {
             (:username, :password, :console, :about)";
         $query = $conn->prepare($createQuery);
         $query->bindParam(":username", $username);
-        $query->bindParam(":password", $password);
+        $query->bindParam(":password", password_hash($password, PASSWORD_DEFAULT));
         $query->bindParam(":console", $console);
         $query->bindParam(":about", $about);
         $query->execute();
@@ -116,6 +116,31 @@ class Dao {
         $query->bindParam(":activity", $activity);
         $query->bindParam(":start", $start);
         $query->bindParam(":other", $other);
+        $query->execute();
+    }
+    
+    public function createActivity($activityName) {
+        $conn = $this->getConnection();
+        $createQuery =
+            "INSERT INTO activities
+            (name)
+            VALUES
+            (:activityName)";
+        $query = $conn->prepare($createQuery);
+        $query->bindParam(":activityName",$activityName);
+        $query->execute();
+    }
+    
+    public function createAssociation($userID, $eventID) {
+        $conn = $this->getConnection();
+        $createQuery = 
+            "INSERT INTO user_event
+            (user, event)
+            VALUES
+            (:userID, :eventID)";
+        $query = $conn->prepare($createQuery);
+        $query->bindParam(":userID", $userID);
+        $query->bindParam(":eventID", $eventID);
         $query->execute();
     }
 }
