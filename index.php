@@ -1,5 +1,6 @@
 <?php
 
+$here = "index.php";
 
 ?>
 
@@ -15,6 +16,11 @@
 </head>
 
 <body>
+<?php
+if(isset($_COOKIE["dsg_login"])) {
+    echo "nailed it";
+}
+?>
 <?php require_once "inc/loginBox.php"; ?>
 <?php require_once "inc/header.php"; ?>
 

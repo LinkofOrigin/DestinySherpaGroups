@@ -26,4 +26,10 @@ function hideloginBack() {
     hidden = true;
 }
 
-// TODO: Find way to click on page to hide loginBack
+function passwordCheck() {
+    if($("#newPassword1").val() === $("#newPassword2").val()) {
+        $("#newUserForm").submit();
+    } else {
+        // let user know passwords don't match
+    }
+}

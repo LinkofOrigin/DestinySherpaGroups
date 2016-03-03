@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class Dao {
     
     private $host = "localhost";
@@ -23,7 +21,7 @@ class Dao {
         $query = $conn->prepare($getQuery);
         $query->bindParam(":userID", $userID);
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     
     public function getEventUsers($eventID) {
@@ -36,7 +34,7 @@ class Dao {
         $query = $conn->prepare($getQuery);
         $query->bindParam(":eventID", $eventID);
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     
     public function getUser($userID) {
@@ -48,10 +46,22 @@ class Dao {
         $query = $conn->prepare($getQuery);
         $query->bindParam(":userID", $userID);
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
     
-    public function createUser($username, $password, $console, $about="") {
+    public function getUserByName($username) {
+        $conn = $this->getConnection();
+        $getQuery = 
+            "SELECT *
+            FROM users
+            WHERE username=:username";
+        $query = $conn->prepare($getQuery);
+        $query->bindParam(":username", $username);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function createUser($username, $password, $console="", $about="") {
         $conn = $this->getConnection();
         $createQuery =
             "INSERT INTO users
@@ -59,6 +69,21 @@ class Dao {
             VALUES
             (:username, :password, :console, :about)";
         $query = $conn->prepare($createQuery);
+        $query->bindParam(":username", $username);
+        $query->bindParam(":password", $password);
+        $query->bindParam(":console", $console);
+        $query->bindParam(":about", $about);
+        $query->execute();
+    }
+    
+    public function editUser($id, $username, $password, $console, $about) {
+        $conn = $this->getConnection();
+        $editQuery =
+            "UPDATE users
+            SET username=:username, password=:password, console=:console, about=:about
+            WHERE id=:id";
+        $query = $conn->prepare($editQuery);
+        $query->bindParam(":id", $id);
         $query->bindParam(":username", $username);
         $query->bindParam(":password", $password);
         $query->bindParam(":console", $console);
@@ -75,7 +100,7 @@ class Dao {
         $query = $conn->prepare($getQuery);
         $query->bindParam(":eventID", $eventID);
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
     
     public function createEvent($sherpaID, $console, $activity, $start, $other="") {

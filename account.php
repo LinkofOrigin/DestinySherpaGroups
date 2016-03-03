@@ -1,5 +1,7 @@
 <?php
 
+$here = "account.php";
+
 ?>
 
 <html>

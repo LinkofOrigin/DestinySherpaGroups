@@ -1,5 +1,7 @@
 <?php
 
+$here = "view.php";
+
 require_once "Dao.php";
 
 $dao = new Dao();
@@ -21,7 +23,7 @@ $events = $dao->getUserEvents(1);
 
 </head>
 <body>
-<?php echo "<pre>" . print_r($events, 1) . "</pre>"; ?>
+<?php //echo "<pre>" . print_r($events, 1) . "</pre>"; ?>
 <?php require_once "inc/loginBox.php"; ?>
 <?php require_once "inc/header.php"; ?>
 
