@@ -76,18 +76,17 @@ class Dao {
         $query->execute();
     }
     
-    public function editUser($id, $username, $password, $console, $about) {
+    public function editUser($username, $newPassword, $newConsole, $newAbout) {
         $conn = $this->getConnection();
         $editQuery =
             "UPDATE users
-            SET username=:username, password=:password, console=:console, about=:about
-            WHERE id=:id";
+            SET password=:password, console=:console, about=:about
+            WHERE username=:username";
         $query = $conn->prepare($editQuery);
-        $query->bindParam(":id", $id);
         $query->bindParam(":username", $username);
-        $query->bindParam(":password", $password);
-        $query->bindParam(":console", $console);
-        $query->bindParam(":about", $about);
+        $query->bindParam(":password", password_hash($newPassword, PASSWORD_DEFAULT));
+        $query->bindParam(":console", $newConsole);
+        $query->bindParam(":about", $newAbout);
         $query->execute();
     }
     

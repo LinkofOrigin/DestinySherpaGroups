@@ -25,11 +25,33 @@ function hideloginBack() {
     hidden = true;
 }
 
-function passwordCheck() {
-    if ($("#newPassword1").val() === $("#newPassword2").val()) {
-        $("#newUserForm").submit();
+function passwordCheck(id1, id2, errorId) {
+    var errorObj = $("#" + errorId);
+    errorObj.show();
+
+    var val1 = $("#" + id1).val();
+    var val2 = $("#" + id2).val();
+    console.log("'"+val1+"' vs '"+val2+"'");
+    if (val1 === val2) {
+        if (!val1 || !val2) {
+            // no empty passwords
+            errorObj.removeClass("passwordMatch");
+            errorObj.addClass("passwordError");
+            errorObj.text("Password can't be empty!");
+            return false;
+        }
+        // passwords match
+        console.log("match");
+        errorObj.removeClass("passwordError");
+        errorObj.addClass("passwordMatch");
+        errorObj.text("Passwords match!");
+        return true;
     } else {
-        // let user know passwords don't match
+        // passwords DON'T match
+        errorObj.removeClass("passwordMatch");
+        errorObj.addClass("passwordError");
+        errorObj.text("Passwords don't match!");
+        return false;
     }
 }
 
@@ -39,5 +61,4 @@ function activateConsole(consoleButton) {
     });
     $(consoleButton).addClass("active");
     $("#accountConsole").val($(consoleButton).text());
-    console.log($("#accountConsole").val());
 }

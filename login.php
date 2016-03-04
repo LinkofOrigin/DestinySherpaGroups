@@ -16,6 +16,8 @@ if (isset($_POST["loginUsername"])) {
         header("Location: {$_GET["redirect"]}");
     } else {
         // login failed
+        // TODO: session stuff for failed login 
+        header("Location: {$_GET["redirect"]}");
     }
 } else if (isset($_POST["newUsername"])) {
     $username = $_POST["newUsername"];
@@ -25,9 +27,11 @@ if (isset($_POST["loginUsername"])) {
         header("Location: account.php"); // create successful
     } else {
         // create failed
-        
+        // TODO: session stuff for failed create
+        header("Location: {$_GET["redirect"]}");
     }
 } else {
+    // some nonsense happened
     header("Location: index.php");
 }
 

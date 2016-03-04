@@ -25,6 +25,10 @@ class User {
             return false; // user already exists!
         }
     }
+    
+    public function updateUser($newPassword, $newConsole, $newAbout) {
+        $this->dao->editUser($this->username, $newPassword, $newConsole, $newAbout);
+    }
 
     public function login() {
         if ($this->verify()) {
@@ -42,7 +46,6 @@ class User {
             return true; // user found
         } else {
             // user doesn't exist or not verified
-            header("Location: index.php");
             return false;
         }
     }

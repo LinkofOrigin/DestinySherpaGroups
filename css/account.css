@@ -25,7 +25,7 @@ h4 {
 #accountAbout {
     width: 400px;
     height: 200px;
-    max-height: 400px;
+    max-height: 80%;
     margin-top: 20px;
     resize: vertical;
 }
@@ -42,6 +42,11 @@ h4 {
 #passwordWrap > label {
     display: block;
     margin: 10px 0;
+}
+
+#accountPassError {
+    display: none;
+    text-align: center;
 }
 
 #accountSubmit {

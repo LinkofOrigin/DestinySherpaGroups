@@ -54,6 +54,14 @@ button:focus {
     outline: none;
 }
 
+.passwordMatch {
+    color: #009900;
+}
+
+.passwordError {
+    color: #990000;
+}
+
 /* Header */
 header {
     background-image: url("../imgs/header_back.jpg");

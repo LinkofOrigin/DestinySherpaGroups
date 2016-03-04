@@ -6,7 +6,7 @@
 	
 	<div id="existingUser">
 		<h2 id="loginH2">Log In</h2>
-		<form id="existUserForm" name="existUserForm" method="POST" action="login.php?redirect=<?php echo $here; ?>">
+		<form id="existUserForm" name="existUserForm" method="post" action="login.php?redirect=<?php echo $here; ?>">
 			<label for="loginUsername">Username
 				<input name="loginUsername" id="loginUsername" type="text" title="Username">
 			</label>
@@ -24,7 +24,7 @@
 	
 	<div id="newUser">
 		<h2>New User</h2>
-		<form id="newUserForm" name="newUserForm" method="POST" action="login.php?redirect=<?php echo $here; ?>" onsubmit="passwordCheck()">
+		<form id="newUserForm" name="newUserForm" method="post" action="login.php?redirect=<?php echo $here; ?>" onsubmit="passwordCheck()">
 			<label for="newUsername">Username (Xbox GT/PSN ID)
 				<input name="newUsername" id="newUsername" type="text" title="Desired Username">
 			</label>
