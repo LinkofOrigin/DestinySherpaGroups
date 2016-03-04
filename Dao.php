@@ -62,6 +62,7 @@ class Dao {
     }
     
     public function createUser($username, $password, $console="", $about="") {
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $conn = $this->getConnection();
         $createQuery =
             "INSERT INTO users
@@ -70,13 +71,14 @@ class Dao {
             (:username, :password, :console, :about)";
         $query = $conn->prepare($createQuery);
         $query->bindParam(":username", $username);
-        $query->bindParam(":password", password_hash($password, PASSWORD_DEFAULT));
+        $query->bindParam(":password", $password);
         $query->bindParam(":console", $console);
         $query->bindParam(":about", $about);
         $query->execute();
     }
     
     public function editUser($username, $newPassword, $newConsole, $newAbout) {
+        $password = password_hash($newPassword, PASSWORD_DEFAULT);
         $conn = $this->getConnection();
         $editQuery =
             "UPDATE users
@@ -84,7 +86,7 @@ class Dao {
             WHERE username=:username";
         $query = $conn->prepare($editQuery);
         $query->bindParam(":username", $username);
-        $query->bindParam(":password", password_hash($newPassword, PASSWORD_DEFAULT));
+        $query->bindParam(":password", $password);
         $query->bindParam(":console", $newConsole);
         $query->bindParam(":about", $newAbout);
         $query->execute();

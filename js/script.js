@@ -33,13 +33,6 @@ function passwordCheck(id1, id2, errorId) {
     var val2 = $("#" + id2).val();
     console.log("'"+val1+"' vs '"+val2+"'");
     if (val1 === val2) {
-        if (!val1 || !val2) {
-            // no empty passwords
-            errorObj.removeClass("passwordMatch");
-            errorObj.addClass("passwordError");
-            errorObj.text("Password can't be empty!");
-            return false;
-        }
         // passwords match
         console.log("match");
         errorObj.removeClass("passwordError");

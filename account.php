@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "Dao.php";
 require_once "User.php";
 
@@ -50,17 +52,10 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
         <div id="left" class="column">
             <h3>Default Console</h3>
             <div id="consoleButtonWrap">
-                <button type="button" id="ps3" class="console <?php echo $PS3; ?>" onclick="activateConsole(this);">
-                    PS3
-                </button>
-                <button type="button" id="x360" class="console <?php echo $X360; ?>" onclick="activateConsole(this);">
-                    X360
-                </button>
-                <button type="button" id="ps4" class="console <?php echo $PS4; ?>" onclick="activateConsole(this);">
-                    PS4
-                </button>
-                <button type="button" id="x1" class="console <?php echo $X1; ?>" onclick="activateConsole(this);">X1
-                </button>
+                <button type="button" id="ps3" class="console <?php echo $PS3; ?>" onclick="activateConsole(this);">PS3</button>
+                <button type="button" id="x360" class="console <?php echo $X360; ?>" onclick="activateConsole(this);">X360</button>
+                <button type="button" id="ps4" class="console <?php echo $PS4; ?>" onclick="activateConsole(this);">PS4</button>
+                <button type="button" id="x1" class="console <?php echo $X1; ?>" onclick="activateConsole(this);">X1</button>
             </div>
             <input type="hidden" name="accountConsole" id="accountConsole" value="<?php echo $userData["console"]; ?>">
         </div>
@@ -74,10 +69,6 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
         <div id="right" class="column">
             <h3>Password Change</h3>
             <div id="passwordWrap">
-                <label for="accountCurrPass">
-                    Current Password<br>
-                    <input id="accountCurrPass" name="accountCurrPass" type="password" title="Your current password">
-                </label>
                 <label for="accountNewPass1">
                     New Password<br>
                     <input id="accountNewPass1" name="accountNewPass1"
@@ -89,6 +80,12 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
                     <input id="accountNewPass2" name="accountNewPass2"
                            onkeyup="passwordCheck(this.id, 'accountNewPass1', 'accountPassError');" type="password"
                            title="Please retype your desired password">
+                </label>
+                <br><br>
+                <hr>
+                <label for="accountCurrPass">
+                    Current Password<br>
+                    <input id="accountCurrPass" name="accountCurrPass" type="password" title="Your current password">
                 </label>
                 <p id="accountPassError">Passwords don't match!</p>
             </div>

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "Dao.php";
 require_once "User.php";
 
@@ -15,9 +17,10 @@ $user = new User($username, $password);
 if($user->verify()) {
     // verify complete, update user
     $user->updateUser($newPassword, $console, $about);
+    // TODO: session stuff for successful update
     header("Location: account.php");
 } else {
-    // verify fail, wrong password ?
+    // verify fail, wrong password (?)
     // TODO: session stuff for verify fail
     header("Location: {$_GET["redirect"]}");
 }
