@@ -2,7 +2,16 @@
 
 session_start();
 
+require_once "Dao.php";
+require_once "User.php";
+
 $here = "index.php";
+
+if(isset($_COOKIE["dsg_login"])) {
+    $userCookie = json_decode($_COOKIE["dsg_login"], true);
+    $user = new User($userCookie["username"]);
+    $user->refresh();
+}
 
 ?>
 
@@ -18,10 +27,6 @@ $here = "index.php";
 </head>
 
 <body>
-<?php
-if(isset($_COOKIE["dsg_login"])) {
-}
-?>
 <?php require_once "inc/loginBox.php"; ?>
 <?php require_once "inc/header.php"; ?>
 
