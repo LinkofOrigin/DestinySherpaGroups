@@ -33,7 +33,6 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
 
     <script src="js/jquery.js"></script>
     <script src="js/script.js"></script>
-
 </head>
 <body>
 <?php require_once "inc/loginBox.php"; ?>

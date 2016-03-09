@@ -36,7 +36,8 @@ class User {
     public function login() {
         if ($this->verify()) {
             // user verified, now login
-            setcookie("dsg_login", json_encode(array("username" => $this->username), time() + 60 * 60 * 24)); // active for 24 hours
+//            setcookie("dsg_login", json_encode(array("username" => $this->username))); // active for 24 hours
+            // TODO: use session_start to do the cookie stuff
             return true;
         } else {
             return false; // user not found
@@ -54,6 +55,7 @@ class User {
     }
     
     public function refresh() {
-        setcookie("dsg_login", json_encode(array("username" => $this->username)), time() + 60 * 60 * 24); // refresh for 24 hours
+//        setcookie("dsg_login", json_encode(array("username" => $this->username)), time() + 60 * 60 * 24); // refresh for 24 hours
+        // TODO: use session_start to do the cookie stuff
     }
 }
