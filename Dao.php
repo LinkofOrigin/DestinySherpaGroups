@@ -144,4 +144,34 @@ class Dao {
         $query->bindParam(":eventID", $eventID);
         $query->execute();
     }
+    
+    public function loginUser($username, $phpsessid) {
+        $conn = $this->getConnection();
+        $row = $this->getUserByName($username);
+        $loginQuery = 
+            "INSERT INTO logins
+            (user_id, phpsessid)
+            VALUES
+            (:user_id, :phpsessid)";
+        $query = $conn->prepare($loginQuery);
+        $query->bindParam(":user_id", $row["id"]);
+        $query->bindParam(":phpsessid",$phpsessid);
+        $query->execute();
+    }
+    
+    public function checkLogin($phpsessid) {
+        $conn = $this->getConnection();
+        $getLoginQuery = 
+            "SELECT * 
+            FROM logins
+            WHERE phpsessid=:phpsessid";
+        $query = $conn->prepare($getLoginQuery);
+        $query->bindParam(":phpsessid", $phpsessid);
+        if($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
 }

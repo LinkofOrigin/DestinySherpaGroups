@@ -5,17 +5,16 @@ session_start();
 require_once "Dao.php";
 require_once "User.php";
 
-if (!isset($_COOKIE["dsg_login"])) {
+if (!isset($_COOKIE["PHPSESSID"])) {
     header("Location: index.php");
 }
 
 $here = "account.php";
-$userCookie = json_decode($_COOKIE["dsg_login"], true);
-$user = new User($userCookie["username"]);
-$user->refresh();
-
 $dao = new Dao();
 $userData = $dao->getUserByName($userCookie["username"]);
+
+$userCookie = json_decode($_COOKIE["dsg_login"], true);
+$user = new User($userCookie["username"]);
 
 $X1 = $userData["console"] === "X1" ? "active" : "";
 $X360 = $userData["console"] === "X360" ? "active" : "";

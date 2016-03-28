@@ -7,10 +7,10 @@ require_once "User.php";
 
 $here = "index.php";
 
-if(isset($_COOKIE["dsg_login"])) {
-    $userCookie = json_decode($_COOKIE["dsg_login"], true);
-    $user = new User($userCookie["username"]);
-    $user->refresh();
+if(isset($_COOKIE["PHPSESSID"])) {
+    $dao = new DAO();
+    $row = $dao->checkLogin($_COOKIE["PHPSESSID"]);
+    
 }
 
 ?>
