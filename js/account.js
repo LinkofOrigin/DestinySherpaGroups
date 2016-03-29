@@ -25,16 +25,20 @@ function hideloginBack() {
     hidden = true;
 }
 
-function passwordCheck(id1, id2, errorId) {
-    var errorObj = $("#" + errorId);
+function passwordCheck() {
+    var errorObj = $("#accountPassError");
     errorObj.show();
 
-    var val1 = $("#" + id1).val();
-    var val2 = $("#" + id2).val();
-    console.log("'"+val1+"' vs '"+val2+"'");
+    var val1 = $("#accountNewPass1").val();
+    var val2 = $("#accountNewPass2").val();
     if (val1 === val2) {
         // passwords match
-        console.log("match");
+        if($("#accountCurrPass").val() === "") {
+            errorObj.removeClass("passwordMatch");
+            errorObj.addClass("passwordError");
+            errorObj.text("Enter your current password.");
+            return false;
+        }
         errorObj.removeClass("passwordError");
         errorObj.addClass("passwordMatch");
         errorObj.text("Passwords match!");
@@ -55,3 +59,12 @@ function activateConsole(consoleButton) {
     $(consoleButton).addClass("active");
     $("#accountConsole").val($(consoleButton).text());
 }
+
+$(document).ready(function() {
+    $(".console").click(function() {
+       activateConsole(this); 
+    });
+    $("#accountForm").submit(passwordCheck);
+    $("#accountNewPass1").keyup(passwordCheck);
+    $("#accountNewPass2").keyup(passwordCheck);
+});

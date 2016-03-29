@@ -12,7 +12,7 @@ $here = "details.php";
     <link rel="stylesheet" href="css/details.css">
 
     <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/details.js"></script>
 
 </head>
 <body>

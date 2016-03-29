@@ -159,7 +159,7 @@ class Dao {
         $query->execute();
     }
     
-    public function checkLogin($phpsessid) {
+    public function getLogin($phpsessid) {
         $conn = $this->getConnection();
         $getLoginQuery = 
             "SELECT * 
@@ -167,11 +167,7 @@ class Dao {
             WHERE phpsessid=:phpsessid";
         $query = $conn->prepare($getLoginQuery);
         $query->bindParam(":phpsessid", $phpsessid);
-        if($query->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-        
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 }

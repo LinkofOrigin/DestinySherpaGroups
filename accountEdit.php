@@ -1,17 +1,19 @@
 <?php
 
-session_start();
-
 require_once "Dao.php";
 require_once "User.php";
 
-$username = json_decode($_COOKIE["dsg_login"], true)["username"];
+$dao = new Dao();
+$row = $dao->getLogin($_COOKIE["PHPSESSID"]);
+$userRow = $dao->getUser($row["id"]);
+$username = $userRow["username"];
+$password = $userRow["password"];
+
 $console = $_POST["accountConsole"];
 $about = $_POST["accountAbout"];
 $password = $_POST["accountCurrPass"];
 $newPassword = $_POST["accountNewPass1"];
 
-$dao = new Dao();
 $user = new User($username, $password);
 
 if($user->verify()) {

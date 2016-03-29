@@ -24,3 +24,8 @@ create table user_event (
 	user int not null,
 	event int not null
 );
+
+create table logins (
+	id int not null,
+	phpsessid text not null
+)

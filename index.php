@@ -9,7 +9,7 @@ $here = "index.php";
 
 if(isset($_COOKIE["PHPSESSID"])) {
     $dao = new DAO();
-    $row = $dao->checkLogin($_COOKIE["PHPSESSID"]);
+    $row = $dao->getLogin($_COOKIE["PHPSESSID"]);
     
 }
 
@@ -23,7 +23,7 @@ if(isset($_COOKIE["PHPSESSID"])) {
     <link rel="stylesheet" href="css/index.css">
 
     <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
 <body>
