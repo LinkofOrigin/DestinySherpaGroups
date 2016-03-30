@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "Dao.php";
 require_once "User.php";
 
@@ -11,10 +13,10 @@ $here = "account.php";
 $dao = new Dao();
 $row = $dao->getLogin($_COOKIE["PHPSESSID"]);
 if(!$row) {
-    header("Location: index.php");
+//    header("Location: index.php");
 }
 
-$userData = $dao->getUser($row["id"]);
+$userData = $dao->getUser($row["user_id"]);
 
 $user = new User($userData["username"]);
 
@@ -33,6 +35,7 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
     <link rel="stylesheet" href="css/account.css">
 
     <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/account.js"></script>
 </head>
 <body>

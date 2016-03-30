@@ -159,6 +159,16 @@ class Dao {
         $query->execute();
     }
     
+    public function logoutUser($phpsessid) {
+        $conn = $this->getConnection();
+        $logoutQuery =
+            "DELETE FROM logins
+            WHERE phpsessid=:phpsessid";
+        $query = $conn->prepare($logoutQuery);
+        $query->bindParam(":phpsessid", $phpsessid);
+        $query->execute();
+    }
+    
     public function getLogin($phpsessid) {
         $conn = $this->getConnection();
         $getLoginQuery = 

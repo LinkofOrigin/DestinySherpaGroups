@@ -36,7 +36,6 @@ class User {
     public function login() {
         if ($this->verify()) {
             // user verified, now login
-            // TODO: use session_start to do the cookie stuff
             session_start();
             $this->dao->loginUser($this->username, $_COOKIE["PHPSESSID"]);
             return true;

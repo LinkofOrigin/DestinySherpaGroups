@@ -94,7 +94,7 @@ header {
     z-index: 10;
 }
 
-#login {
+.headerButton {
     /* button styling */
     border: 0;
     background: #607D8B;
@@ -116,11 +116,11 @@ header {
     top: 50%;
     transform: translateY(-50%);
 }
-#login:hover {
+.headerButton:hover {
     background: #546E7A;
     color: #CFD8DC;
 }
-#login:active {
+.headerButton:active {
     background: #455A64;
 }
 

@@ -1,16 +1,13 @@
 <?php
 
-session_start();
-
 require_once "Dao.php";
 require_once "User.php";
 
 $here = "index.php";
 
-if(isset($_COOKIE["PHPSESSID"])) {
+if(isset($_COOKIE["PHPSESSID"]) && !empty($_COOKIE["PHPSESSID"])) {
     $dao = new DAO();
-    $row = $dao->getLogin($_COOKIE["PHPSESSID"]);
-    
+//    $row = $dao->getLogin($_COOKIE["PHPSESSID"]);
 }
 
 ?>
@@ -24,6 +21,7 @@ if(isset($_COOKIE["PHPSESSID"])) {
 
     <script src="js/jquery.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>

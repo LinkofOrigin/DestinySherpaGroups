@@ -19,6 +19,7 @@ $events = $dao->getUserEvents(1);
     <link rel="stylesheet" href="css/view.css">
 
     <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/view.js"></script>
 
 </head>

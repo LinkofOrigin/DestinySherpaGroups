@@ -60,9 +60,4 @@ function activateConsole(consoleButton) {
     $("#accountConsole").val($(consoleButton).text());
 }
 
-$(document).ready(function() {
-    $("#login").click(toggleloginBack);
-    $(".console").click(function() {
-        activateConsole(this);
-    });
-});
+
