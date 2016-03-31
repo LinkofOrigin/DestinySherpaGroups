@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $here = "create.php";
 
@@ -17,8 +18,8 @@ $here = "create.php";
 
 </head>
 <body>
-<?php require_once "inc/loginBox.php"; ?>
-<?php require_once "inc/header.php"; ?>
+<?php require_once "loginBox.php"; ?>
+<?php require_once "header.php"; ?>
 
 <div class="h2Wrap">
     <h2>
@@ -77,6 +78,6 @@ $here = "create.php";
     </form>
 </div>
 
-<?php require_once "inc/footer.php"; ?>
+<?php require_once "footer.php"; ?>
 </body>
 </html>

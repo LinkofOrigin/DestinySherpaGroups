@@ -4,16 +4,12 @@ session_start();
 
 require_once "Dao.php";
 require_once "User.php";
-
-if (!isset($_COOKIE["PHPSESSID"])) {
-    header("Location: index.php");
-}
-
 $here = "account.php";
 $dao = new Dao();
-$row = $dao->getLogin($_COOKIE["PHPSESSID"]);
-if(!$row) {
-//    header("Location: index.php");
+$row = $dao->getLogin();
+
+if (!$row) {
+    header("Location: index.php");
 }
 
 $userData = $dao->getUser($row["user_id"]);
@@ -39,8 +35,8 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
     <script src="js/account.js"></script>
 </head>
 <body>
-<?php require_once "inc/loginBox.php"; ?>
-<?php require_once "inc/header.php"; ?>
+<?php require_once "loginBox.php"; ?>
+<?php require_once "header.php"; ?>
 
 <div class="h2Wrap">
     <h2>
@@ -98,6 +94,6 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
     </form>
 </div>
 
-<?php require_once "inc/footer.php"; ?>
+<?php require_once "footer.php"; ?>
 </body>
 </html>

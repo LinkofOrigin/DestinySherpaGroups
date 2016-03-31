@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $here = "view.php";
 
@@ -25,8 +26,8 @@ $events = $dao->getUserEvents(1);
 </head>
 <body>
 <?php //echo "<pre>" . print_r($events, 1) . "</pre>"; ?>
-<?php require_once "inc/loginBox.php"; ?>
-<?php require_once "inc/header.php"; ?>
+<?php require_once "loginBox.php"; ?>
+<?php require_once "header.php"; ?>
 
 <div class="h2Wrap">
     <h2>
@@ -197,6 +198,6 @@ $events = $dao->getUserEvents(1);
     </div>
 </div>
 
-<?php require_once "inc/footer.php"; ?>
+<?php require_once "footer.php"; ?>
 </body>
 </html>

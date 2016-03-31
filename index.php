@@ -1,13 +1,15 @@
 <?php
+session_start();
 
 require_once "Dao.php";
 require_once "User.php";
 
+$dao = new Dao();
+$row = $dao->getLogin();
 $here = "index.php";
 
-if(isset($_COOKIE["PHPSESSID"]) && !empty($_COOKIE["PHPSESSID"])) {
-    $dao = new DAO();
-//    $row = $dao->getLogin($_COOKIE["PHPSESSID"]);
+if(!$row) {
+	
 }
 
 ?>
@@ -25,8 +27,8 @@ if(isset($_COOKIE["PHPSESSID"]) && !empty($_COOKIE["PHPSESSID"])) {
 </head>
 
 <body>
-<?php require_once "inc/loginBox.php"; ?>
-<?php require_once "inc/header.php"; ?>
+<?php require_once "loginBox.php"; ?>
+<?php require_once "header.php"; ?>
 
 <div id="mainLeft" class="main">
 
@@ -160,6 +162,6 @@ if(isset($_COOKIE["PHPSESSID"]) && !empty($_COOKIE["PHPSESSID"])) {
 
 </div>
 
-<?php require_once "inc/footer.php"; ?>
+<?php require_once "footer.php"; ?>
 </body>
 </html>
