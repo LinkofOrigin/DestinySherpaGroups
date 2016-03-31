@@ -1,17 +1,3 @@
-<?php
-session_start();
-
-$here = "view.php";
-
-require_once "Dao.php";
-
-$dao = new Dao();
-
-$events = $dao->getUserEvents(1);
-
-
-?>
-
 <html>
 <head>
     <title>My Events - Destiny Sherpa Groups</title>
@@ -24,6 +10,19 @@ $events = $dao->getUserEvents(1);
     <script src="js/view.js"></script>
 
 </head>
+<?php
+session_start();
+
+require_once "Dao.php";
+$here = "view.php";
+
+
+$dao = new Dao();
+
+$events = $dao->getUserEvents(1);
+
+
+?>
 <body>
 <?php //echo "<pre>" . print_r($events, 1) . "</pre>"; ?>
 <?php require_once "loginBox.php"; ?>

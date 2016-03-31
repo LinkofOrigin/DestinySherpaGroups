@@ -1,3 +1,14 @@
+<html>
+<head>
+    <title>Account - Destiny Sherpa Groups</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/account.css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/account.js"></script>
+</head>
 <?php
 
 session_start();
@@ -5,11 +16,12 @@ session_start();
 require_once "Dao.php";
 require_once "User.php";
 $here = "account.php";
+
 $dao = new Dao();
 $row = $dao->getLogin();
 
 if (!$row) {
-    header("Location: index.php");
+	header("Location: index.php");
 }
 
 $userData = $dao->getUser($row["user_id"]);
@@ -22,18 +34,6 @@ $PS3 = $userData["console"] === "PS3" ? "active" : "";
 $PS4 = $userData["console"] === "PS4" ? "active" : "";
 
 ?>
-
-<html>
-<head>
-    <title>Account - Destiny Sherpa Groups</title>
-    <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/account.css">
-
-    <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/account.js"></script>
-</head>
 <body>
 <?php require_once "loginBox.php"; ?>
 <?php require_once "header.php"; ?>

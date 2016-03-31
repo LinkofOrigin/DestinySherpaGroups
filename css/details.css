@@ -39,6 +39,7 @@
 #sherpaInfo {
     padding: 0 20px;
     overflow-y: auto;
+    font-size: 18px;
 }
 
 #detailMiddle {
@@ -75,6 +76,7 @@
     clear: both;
     padding: 0 20px;
     overflow-y: auto;
+    font-size: 20px;
 }
 
 #detailRight {

@@ -1,19 +1,3 @@
-<?php
-session_start();
-
-require_once "Dao.php";
-require_once "User.php";
-
-$dao = new Dao();
-$row = $dao->getLogin();
-$here = "index.php";
-
-if(!$row) {
-	
-}
-
-?>
-
 <html>
 <head>
     <title>Home - Destiny Sherpa Groups</title>
@@ -25,7 +9,18 @@ if(!$row) {
     <script src="js/index.js"></script>
     <script src="js/script.js"></script>
 </head>
+<?php
+session_start();
 
+require_once "Dao.php";
+require_once "User.php";
+$here = "index.php";
+
+$dao = new Dao();
+$row = $dao->getLogin();
+
+
+?>
 <body>
 <?php require_once "loginBox.php"; ?>
 <?php require_once "header.php"; ?>

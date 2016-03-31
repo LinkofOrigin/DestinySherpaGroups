@@ -132,6 +132,18 @@ class Dao {
 		$query->execute();
 	}
 	
+	public function getActivity($activityID) {
+		$conn = $this->getConnection();
+		$getQuery =
+			"SELECT *
+            FROM activities
+            WHERE id=:activityID";
+		$query = $conn->prepare($getQuery);
+		$query->bindParam(":activityID", $activityID);
+		$query->execute();
+		return $query->fetch(PDO::FETCH_ASSOC);
+	}
+	
 	public function createAssociation($userID, $eventID) {
 		$conn = $this->getConnection();
 		$createQuery =

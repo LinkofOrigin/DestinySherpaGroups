@@ -1,10 +1,3 @@
-<?php
-session_start();
-
-$here = "create.php";
-
-?>
-
 <html>
 <head>
     <title>Event Create - Destiny Sherpa Groups</title>
@@ -17,6 +10,12 @@ $here = "create.php";
     <script src="js/create.js"></script>
 
 </head>
+<?php
+session_start();
+
+$here = "create.php";
+
+?>
 <body>
 <?php require_once "loginBox.php"; ?>
 <?php require_once "header.php"; ?>
