@@ -57,10 +57,8 @@ function activateConsole(consoleButton) {
         $(this).removeClass("active");
     });
     $(consoleButton).addClass("active");
-    $("#accountConsole").val($(consoleButton).text());
+    $("#createConsole").val($(consoleButton).text());
 }
 
 $(document).ready(function() {
-    $("#login").click(toggleloginBack);
-    
 });

@@ -12,189 +12,66 @@
 </head>
 <?php
 session_start();
+include "timezone.php";
 
 require_once "Dao.php";
 $here = "view.php";
 
-
 $dao = new Dao();
 
-$events = $dao->getUserEvents(1);
+$row = $dao->getLogin();
+
+if (!$row) {
+	header("Location: index.php");
+}
+
+$user = $dao->getUser($row["user_id"]);
+
+$events = $dao->getUserEvents($user["id"]);
 
 
 ?>
 <body>
-<?php //echo "<pre>" . print_r($events, 1) . "</pre>"; ?>
 <?php require_once "loginBox.php"; ?>
 <?php require_once "header.php"; ?>
 
 <div class="h2Wrap">
     <h2>
-        Link of Origin's Events
+        <?php echo $user["username"]; ?>'s Events
     </h2>
 </div>
 
 <div id="viewContent">
-
-    <div class="eventWrap">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventX360 consoleMini">
-                        X360
+	
+	<?php
+	foreach($events as $event) {
+		$sherpa = $dao->getUser($event["sherpa"]);
+		$activity = $dao->getActivity($event["activity"]);
+		echo 
+"	<a href='details.php?id={$event['id']}' class=\"eventWrap\">
+        <div class=\"event\">
+            <div class=\"eventSherpa\">
+                <div class=\"eventConsole\">
+                    <div class=\"event{$event["console"]} consoleMini\">
+                        {$event["console"]}
                     </div>
                 </div>
-                <p>Link of Origin</p>
+                <p>{$sherpa["username"]}</p>
             </div>
-            <div class="eventActivity">
-                Crota's End
+            <div class=\"eventActivity\">
+                {$activity["name"]}
             </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
+            <div class=\"eventDateTime\">
+                ".date('M. d - g:i A', strtotime($event['start']))."
             </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et,
-                    finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean iaculis,
-                    arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem. Duis
-                    cursus
-                    posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget porta
-                    convallis,
-                    vestibulum eget sem. Etiam a ipsum metus.
-                </p>
+            <div class=\"eventOther\">
+                <p>{$event["other"]}</p>
             </div>
         </div>
-    </div>
-
-    <div class="eventWrap">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventPS4 consoleMini">
-                        PS4
-                    </div>
-                </div>
-                <p>Link of Origin</p>
-            </div>
-            <div class="eventActivity">
-                King's Fall
-            </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
-            </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et,
-                    finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean iaculis,
-                    arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem. Duis
-                    cursus
-                    posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget porta
-                    convallis,
-                    vestibulum eget sem. Etiam a ipsum metus.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="eventWrap">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventPS3 consoleMini">
-                        PS3
-                    </div>
-                </div>
-                <p>Link of Origin</p>
-            </div>
-            <div class="eventActivity">
-                Prison of Elders
-            </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
-            </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et,
-                    finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean iaculis,
-                    arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem. Duis
-                    cursus
-                    posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget porta
-                    convallis,
-                    vestibulum eget sem. Etiam a ipsum metus.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="eventWrap">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventX1 consoleMini">
-                        X1
-                    </div>
-                </div>
-                <p>Link of Origin</p>
-            </div>
-            <div class="eventActivity">
-                Vault of Glass
-            </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
-            </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et,
-                    finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean iaculis,
-                    arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem. Duis
-                    cursus
-                    posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget porta
-                    convallis,
-                    vestibulum eget sem. Etiam a ipsum metus.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="eventWrap">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventX360 consoleMini">
-                        X360
-                    </div>
-                </div>
-                <p>Link of Origin</p>
-            </div>
-            <div class="eventActivity">
-                Vault of Glass
-            </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
-            </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et,
-                    finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean iaculis,
-                    arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem. Duis
-                    cursus
-                    posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget porta
-                    convallis,
-                    vestibulum eget sem. Etiam a ipsum metus.
-                </p>
-            </div>
-        </div>
-    </div>
+    </a>";
+	}
+	
+	?>
 </div>
 
 <?php require_once "footer.php"; ?>

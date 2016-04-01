@@ -12,6 +12,7 @@ $row = $dao->getLogin();
             echo "<a href='logout.php?redirect={$here}'><button id=\"logout\" class='headerButton'>Logout</button></a>";
             echo "<a href='account.php'><button class='headerButton'>Account</button></a>";
             echo "<a href='view.php'><buttton class='headerButton'>My Events</buttton></a>";
+	        echo "<a href='create.php'><button id='createButton' class='headerButton'>Create New Event</button></a>";
         } else {
             echo "<button id=\"login\" class='headerButton'>Login</button>";
         }

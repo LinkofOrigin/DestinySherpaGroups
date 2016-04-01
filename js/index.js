@@ -59,5 +59,3 @@ function activateConsole(consoleButton) {
     $(consoleButton).addClass("active");
     $("#accountConsole").val($(consoleButton).text());
 }
-
-

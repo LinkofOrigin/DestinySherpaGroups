@@ -32,23 +32,23 @@ $here = "create.php";
         <div id="consoleWrap" class="wrapper">
             <h3>Console</h3>
             <div id="consoleButtonWrap">
-                <button type="button" id="ps3" class="console" onclick="">PS3</button>
-                <button type="button" id="x360" class="console" onclick="">X360</button>
-                <button type="button" id="ps4" class="console" onclick="">PS4</button>
-                <button type="button" id="x1" class="console" onclick="">X1</button>
+                <button type="button" id="ps3" class="console">PS3</button>
+                <button type="button" id="x360" class="console">X360</button>
+                <button type="button" id="ps4" class="console">PS4</button>
+                <button type="button" id="x1" class="console">X1</button>
             </div>
-            <input type="hidden" name="createConsole" value="">
+            <input type="hidden" id="createConsole" name="createConsole" value="">
         </div>
 
         <div id="activityWrap" class="wrapper">
             <h3>Activity</h3>
             <div>
-                <button type="button" id="vog" class="activity" onclick="">Vault of Glass</button>
-                <button type="button" id="crota" class="activity" onclick="">Crota's End</button>
-                <button type="button" id="prison" class="activity" onclick="">Prison of Elders</button>
-                <button type="button" id="kingsFall" class="activity" onclick="">King's Fall</button>
+                <button type="button" id="vog" class="activity">Vault of Glass</button>
+                <button type="button" id="crota" class="activity">Crota's End</button>
+                <button type="button" id="prison" class="activity">Prison of Elders</button>
+                <button type="button" id="kingsFall" class="activity">King's Fall</button>
             </div>
-            <input type="hidden" name="createActivity" value="">
+            <input type="hidden" id="createActivity" name="createActivity" value="">
         </div>
 
         <div id="dayTimeWrap">
