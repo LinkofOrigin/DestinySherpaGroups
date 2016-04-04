@@ -12,7 +12,7 @@
 </head>
 <?php
 session_start();
-include "timezone.php";
+//include "timezone.php";
 
 require_once "Dao.php";
 $here = "details.php?id={$_GET["id"]}";
@@ -29,7 +29,7 @@ $sherpaName = $sherpa["username"];
 $sherpaAbout = $sherpa["about"];
 $console = $event["console"];
 $activityName = $activity["name"];
-$eventStart = date("M. d - g:i A", strtotime($event["start"]));
+$eventStart = date_create_from_format('M. d - g:i A',$event['start']);
 $eventOther = $event["other"];
 
 $open = "- Open -";

@@ -1,31 +1,33 @@
-create table users (
-	id int not null auto_increment primary key,
-	username varchar(64) not null,
-	password varchar(255) not null,
-	console varchar(4),
-	about varchar(255)
+CREATE TABLE users (
+  id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(64)  NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  console  VARCHAR(4),
+  about    VARCHAR(255)
 );
 
-create table events (
-	id int not null auto_increment primary key,
-	sherpa int not null,
-	console varchar(4) not null,
-	activity int not null,
-	start datetime not null,
-	other varchar(255)
+CREATE TABLE events (
+  id       INT        NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  sherpa   INT        NOT NULL,
+  console  VARCHAR(4) NOT NULL,
+  activity INT        NOT NULL,
+  start    DATETIME   NOT NULL,
+  other    VARCHAR(255)
 );
 
-create table activities (
-	id int not null auto_increment primary key,
-	name varchar(32) not null
+CREATE TABLE activities (
+  id   INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(32) NOT NULL
 );
 
-create table user_event (
-	user int not null,
-	event int not null
+CREATE TABLE user_event (
+  id    INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user  INT NOT NULL,
+  event INT NOT NULL
 );
 
-create table logins (
-	id int not null AUTO_INCREMENT PRIMARY KEY,
-	phpsessid text not null
-)
+CREATE TABLE logins (
+  id        INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id   INT  NOT NULL,
+  phpsessid TEXT NOT NULL
+);

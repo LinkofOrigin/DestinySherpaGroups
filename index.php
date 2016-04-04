@@ -11,7 +11,7 @@
 </head>
 <?php
 session_start();
-include "timezone.php";
+//include "timezone.php";
 
 require_once "Dao.php";
 require_once "User.php";
@@ -89,7 +89,7 @@ $events = $dao->getAllEvents();
                 {$activity["name"]}
             </div>
             <div class='eventDateTime'>
-                ".date('M. d - g:i A', strtotime($event['start']))."
+                ".date_create_from_format('M. d - g:i A',$event['start'])."
             </div>
             <div class='eventOther'>
                 <p>{$event["other"]}</p>
