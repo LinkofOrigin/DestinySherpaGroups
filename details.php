@@ -29,7 +29,7 @@ $sherpaName = $sherpa["username"];
 $sherpaAbout = $sherpa["about"];
 $console = $event["console"];
 $activityName = $activity["name"];
-$eventStart = date_create_from_format('M. d - g:i A',$event['start']);
+$eventStart = date_format(date_create($event['start']),'M. d - g:i A');
 $eventOther = $event["other"];
 
 $open = "- Open -";

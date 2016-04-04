@@ -89,7 +89,7 @@ $events = $dao->getAllEvents();
                 {$activity["name"]}
             </div>
             <div class='eventDateTime'>
-                ".date_create_from_format('M. d - g:i A',$event['start'])."
+                ".date_format(date_create($event['start']),'M. d - g:i A')."
             </div>
             <div class='eventOther'>
                 <p>{$event["other"]}</p>
