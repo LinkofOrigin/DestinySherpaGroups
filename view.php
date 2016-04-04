@@ -32,7 +32,6 @@ $events = $dao->getUserEvents($user["id"]);
 
 ?>
 <body>
-<?php require_once "loginBox.php"; ?>
 <?php require_once "header.php"; ?>
 
 <div class="h2Wrap">
@@ -48,7 +47,7 @@ $events = $dao->getUserEvents($user["id"]);
 		$sherpa = $dao->getUser($event["sherpa"]);
 		$activity = $dao->getActivity($event["activity"]);
 		echo 
-"	<a href='details.php?id={$event['id']}' class=\"eventWrap\">
+"	<a href='details.php?id={$event['event']}' class=\"eventWrap\">
         <div class=\"event\">
             <div class=\"eventSherpa\">
                 <div class=\"eventConsole\">

@@ -1,30 +1,3 @@
-var hidden = true;
-function toggleloginBack() {
-    if (hidden) {
-        showloginBack();
-    } else {
-        hideloginBack();
-    }
-}
-
-function showloginBack() {
-    $("#loginBack").css({display: "block"});
-    $("#loginBox").css({display: "block"});
-    //$("body > *").not("body > header, #loginBack, #loginBack *").each(function() {
-    //    $(this).css({opacity: 0.4});
-    //});
-    hidden = false;
-}
-
-function hideloginBack() {
-    $("#loginBack").css({display: "none"});
-    $("#loginBox").css({display: "none"});
-    //$("*").each(function() {
-    //    $(this).css({opacity: 1.0});
-    //});
-    hidden = true;
-}
-
 function passwordCheck(id1, id2, errorId) {
     var errorObj = $("#" + errorId);
     errorObj.show();
@@ -52,6 +25,10 @@ function passwordCheck(id1, id2, errorId) {
     }
 }
 
+var loggedin = false;
+var isSherpa = false;
+var isFull = false;
+
 function activateConsole(consoleButton) {
     $(".console").each(function () {
         $(this).removeClass("active");
@@ -61,4 +38,11 @@ function activateConsole(consoleButton) {
 }
 
 $(document).ready(function() {
+    $("#joinGroup").on("click", function() {
+        if(loggedin && !isSherpa && !isFull) {
+            return true;
+        } else {
+            return false;
+        }
+    });
 });

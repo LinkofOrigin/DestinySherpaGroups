@@ -60,3 +60,17 @@ h4 {
     padding: 10px 15px;
     cursor: pointer;
 }
+
+#editError {
+    position: absolute;
+    z-index: 2;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #546E7A;
+    border: 2px solid #263238;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ECEFF1;
+}

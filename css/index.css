@@ -25,6 +25,16 @@
     box-sizing: border-box;
 }
 
+#filtersText {
+    position: absolute;
+    top: 150px;
+    background-color: #263238;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #263238;
+    padding: 5px;
+}
+
 .filterWrap {
     display: inline-block;
     position: relative;

@@ -1,5 +1,4 @@
 <?php
-
 $timezone = "";
 if (isset($_SESSION["timezone"]) && !empty($_SESSION["timezone"])) {
 	$timezone = $_SESSION["timezone"];
@@ -22,7 +21,7 @@ if (isset($_SESSION["timezone"]) && !empty($_SESSION["timezone"])) {
 </script>
 
 <?php
+if (!empty($timeZone)) {
 	date_default_timezone_set($timezone);
-	exit();
+}
 ?>
-

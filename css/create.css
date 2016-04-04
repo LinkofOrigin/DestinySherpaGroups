@@ -2,7 +2,7 @@
 #createContents {
     display: inline-block;
     width: 100%;
-    height: 70%;
+    min-height: 70%;
     padding: 30px;
     background-color: #607D8B;
 }
@@ -48,6 +48,19 @@
     width: 500px;
     height: 200px;
     margin-top: 10px;
+}
+
+#createError {
+    display: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #546E7A;
+    border: 2px solid #263238;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ECEFF1;
 }
 
 #createSubmit {

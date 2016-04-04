@@ -11,6 +11,7 @@
 </head>
 <?php
 session_start();
+include "timezone.php";
 
 require_once "Dao.php";
 require_once "User.php";
@@ -19,8 +20,10 @@ $here = "index.php";
 $dao = new Dao();
 $row = $dao->getLogin();
 
+$events = $dao->getAllEvents();
 
 ?>
+
 <body>
 <?php require_once "loginBox.php"; ?>
 <?php require_once "header.php"; ?>
@@ -28,12 +31,14 @@ $row = $dao->getLogin();
 <div id="mainLeft" class="main">
 
     <div id="consoles">
+	    <span id="filtersText">Filters</span>
         <div class="filterWrap">
-            <button id="ps3" class="console">PS3</button>
-            <button id="x360" class="console">X360</button>
-            <button id="ps4" class="console">PS4</button>
-            <button id="x1" class="console">X1</button>
+            <button id="PS3" class="console">PS3</button>
+            <button id="X360" class="console">X360</button>
+            <button id="PS4" class="console">PS4</button>
+            <button id="X1" class="console">X1</button>
         </div>
+	    <input type="hidden" id="filterConsole" name="filterConsole">
     </div>
 
     <div id="activities">
@@ -43,18 +48,20 @@ $row = $dao->getLogin();
             <button id="prison" class="activity">Prison of Elders</button>
             <button id="kingsFall" class="activity">King's Fall</button>
         </div>
+	    <input type="hidden" id="filterActivity" name="filterActivity">
+
     </div>
 
     <div id="dateTime">
         <div class="filterWrap">
             <div class="dateTime">
                 <h3>Date</h3>
-                <input title="Filter Date" type="date">
+                <input id="filterDate" title="Filter Date" type="date">
             </div>
 
             <div class="dateTime">
                 <h3>Time</h3>
-                <input title="Filter Date" type="time">
+                <input id="filterTime" title="Filter Date" type="time">
             </div>
         </div>
     </div>
@@ -62,98 +69,36 @@ $row = $dao->getLogin();
 </div>
 
 <div id="mainRight" class="main">
-
-    <a class="eventWrap" href="details.php?id=1">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventX1 consoleMini">
-                        X1
+	
+	<?php
+	foreach($events as $event) {
+		$sherpa = $dao->getUser($event["sherpa"]);
+		$activity = $dao->getActivity($event["activity"]);
+		echo
+			"	<a class='eventWrap' href='details.php?id={$event["id"]}'>
+        <div class='event'>
+            <div class='eventSherpa'>
+                <div class='eventConsole'>
+                    <div class='event{$event["console"]} consoleMini'>
+                        {$event["console"]}
                     </div>
                 </div>
-                <p>Link of Origin</p>
+                <p>{$sherpa["username"]}</p>
             </div>
-            <div class="eventActivity">
-                Vault of Glass
+            <div class='eventActivity'>
+                {$activity["name"]}
             </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
+            <div class='eventDateTime'>
+                ".date('M. d - g:i A', strtotime($event['start']))."
             </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et, finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean
-                    iaculis, arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem.
-                    Duis cursus posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget
-                    porta convallis, vestibulum eget sem. Etiam a ipsum metus.
-                </p>
+            <div class='eventOther'>
+                <p>{$event["other"]}</p>
             </div>
         </div>
-    </a>
+    </a>";
+	}
 
-    <a class="eventWrap" href="details.php?id=2">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventPS4 consoleMini">
-                        PS4
-                    </div>
-                </div>
-                <p>Link of Origin</p>
-            </div>
-            <div class="eventActivity">
-                Prison of Elders
-            </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
-            </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et,
-                    finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean iaculis,
-                    arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem. Duis
-                    cursus
-                    posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget porta
-                    convallis,
-                    vestibulum eget sem. Etiam a ipsum metus.
-                </p>
-            </div>
-        </div>
-    </a>
-
-    <a class="eventWrap" href="details.php?id=3">
-        <div class="event">
-            <div class="eventSherpa">
-                <div class="eventConsole">
-                    <div class="eventX360 consoleMini">
-                        X360
-                    </div>
-                </div>
-                <p>Link of Origin</p>
-            </div>
-            <div class="eventActivity">
-                Crota's End
-            </div>
-            <div class="eventDateTime">
-                ABC. 99 - 99:99 ZM
-            </div>
-            <div class="eventOther">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec nunc viverra, ornare lacus
-                    et,
-                    finibus odio. Ut non lorem a neque elementum faucibus et pretium libero. Pellentesque eu lacinia
-                    leo.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Aenean iaculis,
-                    arcu quis blandit tempus, sapien nulla accumsan lectus, ac convallis ipsum elit in lorem. Duis
-                    cursus
-                    posuere tempor. Sed pulvinar ac purus non dapibus. Vivamus libero dolor, mollis eget porta
-                    convallis,
-                    vestibulum eget sem. Etiam a ipsum metus.
-                </p>
-            </div>
-        </div>
-    </a>
+	?>
 
 </div>
 

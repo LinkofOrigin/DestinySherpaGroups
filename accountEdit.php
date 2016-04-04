@@ -1,11 +1,16 @@
 <?php
+session_start();
 
 require_once "Dao.php";
 require_once "User.php";
 
 $dao = new Dao();
-$row = $dao->getLogin($_COOKIE["PHPSESSID"]);
-$userRow = $dao->getUser($row["id"]);
+$row = $dao->getLogin();
+if(!$row) {
+	header("Location: index.php");
+}
+
+$userRow = $dao->getUser($row["user_id"]);
 $username = $userRow["username"];
 $password = $userRow["password"];
 
@@ -19,12 +24,13 @@ $user = new User($username, $password);
 if($user->verify()) {
     // verify complete, update user
     $user->updateUser($newPassword, $console, $about);
-    // TODO: session stuff for successful update
     header("Location: account.php");
 } else {
-    // verify fail, wrong password (?)
-    // TODO: session stuff for verify fail
-    header("Location: {$_GET["redirect"]}");
+    // verify fail, wrong password
+	$_SESSION["login_console"] = $console;
+	$_SESSION["login_about"] = $about;
+	$_SESSION["login_newPassword"] = $newPassword;
+    header("Location: account.php");
 }
 
-exit();
+//exit();

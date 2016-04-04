@@ -26,6 +26,6 @@ create table user_event (
 );
 
 create table logins (
-	id int not null,
+	id int not null AUTO_INCREMENT PRIMARY KEY,
 	phpsessid text not null
 )

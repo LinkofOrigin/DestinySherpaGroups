@@ -104,4 +104,29 @@
     padding: 5px 0;
 }
 
+#joinGroup {
+    color: #ECEFF1;
+    font-size: 20px;
+    background-color: #37474F;
+    border: 2px solid #263238;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
 
+#deleteEvent {
+    color: #ECEFF1;
+    font-size: 20px;
+    background-color: #37474F;
+    border: 2px solid #263238;
+    border-radius: 15px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 150px;
+    right: 20%;
+    cursor: pointer;
+}

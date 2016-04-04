@@ -12,8 +12,9 @@ if ($row) {
 
 if (isset($_GET["redirect"]) && !empty($_GET["redirect"])) {
 	header("Location: " . $_GET["redirect"]);
+} else {
+	header("Location: index.php");
 }
 
-header("Location: index.php");
 
 exit();

@@ -1,16 +1,16 @@
 <?php
 
 class Dao {
-	
+
 	private $host = "localhost";
 	private $db = "jrupe";
 	private $user = "jrupe";
 	private $pass = "miniman333";
-	
+
 	public function getConnection() {
 		return new PDO("mysql:host={$this->host};dbname={$this->db}", $this->user, $this->pass);
 	}
-	
+
 	public function getUserEvents($userID) {
 		$conn = $this->getConnection();
 		$getQuery =
@@ -23,7 +23,7 @@ class Dao {
 		$query->execute();
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
-	
+
 	public function getEventUsers($eventID) {
 		$conn = $this->getConnection();
 		$getQuery =
@@ -36,7 +36,7 @@ class Dao {
 		$query->execute();
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
-	
+
 	public function getUser($userID) {
 		$conn = $this->getConnection();
 		$getQuery =
@@ -48,7 +48,7 @@ class Dao {
 		$query->execute();
 		return $query->fetch(PDO::FETCH_ASSOC);
 	}
-	
+
 	public function getUserByName($username) {
 		$conn = $this->getConnection();
 		$getQuery =
@@ -60,7 +60,7 @@ class Dao {
 		$query->execute();
 		return $query->fetch(PDO::FETCH_ASSOC);
 	}
-	
+
 	public function createUser($username, $password, $console = "", $about = "") {
 		$password = password_hash($password, PASSWORD_DEFAULT);
 		$conn = $this->getConnection();
@@ -76,7 +76,7 @@ class Dao {
 		$query->bindParam(":about", $about);
 		$query->execute();
 	}
-	
+
 	public function editUser($username, $newPassword, $newConsole, $newAbout) {
 		$password = password_hash($newPassword, PASSWORD_DEFAULT);
 		$conn = $this->getConnection();
@@ -91,7 +91,7 @@ class Dao {
 		$query->bindParam(":about", $newAbout);
 		$query->execute();
 	}
-	
+
 	public function getEvent($eventID) {
 		$conn = $this->getConnection();
 		$getQuery =
@@ -103,7 +103,46 @@ class Dao {
 		$query->execute();
 		return $query->fetch(PDO::FETCH_ASSOC);
 	}
-	
+
+	public function getAllEvents() {
+		$conn = $this->getConnection();
+		$getQuery =
+			"SELECT *
+            FROM events
+            LIMIT 50";
+		$query = $conn->prepare($getQuery);
+		$query->bindParam(":eventID", $eventID);
+		$query->execute();
+		return $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function filterEvents($console, $activity, $dateTime) {
+		$conn = $this->getConnection();
+		$getQuery =
+			"SELECT *
+            FROM events
+            WHERE console=:console AND activity=:activity AND start>=:start
+            LIMIT 50";
+		if ($console === "*") {
+			$getQuery = str_replace("console=:console", "", $getQuery);
+		}
+		if ($activity === "*") {
+			$getQuery = str_replace("activity=:activity", "", $getQuery);
+		}
+		$getQuery = str_replace("AND  AND", "AND", $getQuery);
+		$getQuery = str_replace("WHERE  AND", "WHERE", $getQuery);
+		$query = $conn->prepare($getQuery);
+		if ($console !== "*") {
+			$query->bindParam(":console", $console);
+		}
+		if ($activity !== "*") {
+			$query->bindParam(":activity", $activity);
+		}
+		$query->bindParam(":start", $dateTime);
+		$query->execute();
+		return $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 	public function createEvent($sherpaID, $console, $activity, $start, $other = "") {
 		$conn = $this->getConnection();
 		$createQuery =
@@ -118,8 +157,29 @@ class Dao {
 		$query->bindParam(":start", $start);
 		$query->bindParam(":other", $other);
 		$query->execute();
+		$newEventID =  $conn->lastInsertId();
+		$createQuery =
+			"INSERT INTO user_event
+            (user, event)
+            VALUES
+            (:userID, :eventID)";
+		$query = $conn->prepare($createQuery);
+		$query->bindParam(":userID", $sherpaID);
+		$query->bindParam(":eventID", $newEventID);
+		$query->execute();
+		return $newEventID;
 	}
 	
+	public function deleteEvent($eventID) {
+		$conn = $this->getConnection();
+		$createQuery =
+			"DELETE FROM events
+            WHERE id=:eventID";
+		$query = $conn->prepare($createQuery);
+		$query->bindParam(":eventID", $eventID);
+		$query->execute();
+	}
+
 	public function createActivity($activityName) {
 		$conn = $this->getConnection();
 		$createQuery =
@@ -131,7 +191,7 @@ class Dao {
 		$query->bindParam(":activityName", $activityName);
 		$query->execute();
 	}
-	
+
 	public function getActivity($activityID) {
 		$conn = $this->getConnection();
 		$getQuery =
@@ -143,7 +203,7 @@ class Dao {
 		$query->execute();
 		return $query->fetch(PDO::FETCH_ASSOC);
 	}
-	
+
 	public function createAssociation($userID, $eventID) {
 		$conn = $this->getConnection();
 		$createQuery =
@@ -157,12 +217,36 @@ class Dao {
 		$query->execute();
 	}
 	
+	public function removeAssociation($userID, $eventID) {
+		$conn = $this->getConnection();
+		$createQuery =
+			"DELETE FROM user_event
+            WHERE user=:userID AND event=:eventID";
+		$query = $conn->prepare($createQuery);
+		$query->bindParam(":userID", $userID);
+		$query->bindParam(":eventID", $eventID);
+		$query->execute();
+	}
+	
+	public function getAssociation($userID, $eventID) {
+		$conn = $this->getConnection();
+		$getQuery = 
+			"SELECT *
+			FROM user_event
+			WHERE user=:userID AND event=:eventID";
+		$query = $conn->prepare($getQuery);
+		$query->bindParam(":userID", $userID);
+		$query->bindParam(":eventID", $eventID);
+		$query->execute();
+		return $query->fetch(PDO::FETCH_ASSOC);
+	}
+
 	public function loginUser($username, $phpsessid) {
 		$conn = $this->getConnection();
 		$row = $this->getUserByName($username);
 		if ($this->getLogin()) {
 			$updateQuery =
-				"UPDATE users
+				"UPDATE logins
                 SET phpsessid=:phpsessid
                 WHERE user_id=:user_id";
 			$query = $conn->prepare($updateQuery);
@@ -181,7 +265,7 @@ class Dao {
 			$query->execute();
 		}
 	}
-	
+
 	public function logoutUser($phpsessid) {
 		$conn = $this->getConnection();
 		$logoutQuery =
@@ -191,7 +275,7 @@ class Dao {
 		$query->bindParam(":phpsessid", $phpsessid);
 		$query->execute();
 	}
-	
+
 	public function getLogin() {
 		$conn = $this->getConnection();
 		$getLoginQuery =
