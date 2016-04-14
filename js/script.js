@@ -7,17 +7,18 @@ function toggleloginBack() {
     }
 }
 
+var fadeSpeed = 150;
 function showloginBack() {
-    $("#loginBack").show();
-    $("#loginBox").show();
-    $("#loginErrors").show();
+    $("#loginBack").fadeIn(fadeSpeed);
+    $("#loginBox").fadeIn(fadeSpeed);
+    $("#loginErrors").fadeIn(fadeSpeed);
     hidden = false;
 }
 
 function hideloginBack() {
-    $("#loginBack").hide();
-    $("#loginBox").hide();
-    $("#loginErrors").hide();
+    $("#loginBack").fadeOut(fadeSpeed);
+    $("#loginBox").fadeOut(fadeSpeed);
+    $("#loginErrors").fadeOut(fadeSpeed);
     hidden = true;
 }
 

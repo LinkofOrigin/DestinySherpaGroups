@@ -274,6 +274,8 @@ class Dao {
 		$query = $conn->prepare($logoutQuery);
 		$query->bindParam(":phpsessid", $phpsessid);
 		$query->execute();
+		session_start();
+		session_destroy();
 	}
 
 	public function getLogin() {

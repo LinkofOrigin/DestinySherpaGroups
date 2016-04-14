@@ -6,14 +6,14 @@
 body {
     margin: 0;
     background: black;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: 'Roboto', "Trebuchet MS", Helvetica, sans-serif;
     color: #ECEFF1;
 }
 
 #headerTitle {
     color: #ECEFF1;
     font-size: 28px;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: 'Roboto Slab', "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 800;
     text-decoration: none;
     cursor: pointer;
@@ -102,7 +102,7 @@ header {
     display: none;
     width: 500px;
     color: white;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: 'Roboto', "Trebuchet MS", Helvetica, sans-serif;
     background-color: #78909C;
     border: 3px solid #263238;
     padding: 10px 20px;

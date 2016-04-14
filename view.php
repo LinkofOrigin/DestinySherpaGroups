@@ -2,6 +2,7 @@
 <head>
     <title>My Events - Destiny Sherpa Groups</title>
     <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
+	<link href='https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Mono' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/view.css">
 
@@ -28,7 +29,6 @@ if (!$row) {
 $user = $dao->getUser($row["user_id"]);
 
 $events = $dao->getUserEvents($user["id"]);
-
 
 ?>
 <body>
