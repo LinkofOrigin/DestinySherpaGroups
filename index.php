@@ -50,7 +50,6 @@ $events = $dao->getAllEvents();
             <button id="kingsFall" class="activity">King's Fall</button>
         </div>
 	    <input type="hidden" id="filterActivity" name="filterActivity">
-
     </div>
 
     <div id="dateTime">
