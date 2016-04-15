@@ -4,6 +4,17 @@ require_once "Dao.php";
 $dao = new Dao();
 
 $filterConsole = $_POST["console"];
+if($filterConsole === "1") {
+    $filterConsole = "PS3";
+} else if ($filterConsole === "2") {
+    $filterConsole = "X360";
+} else if ($filterConsole === "3") {
+    $filterConsole = "PS4";
+} else if ($filterConsole === "4") {
+    $filterConsole = "X1";
+} else {
+    $filterConsole = "*";
+}
 $filterActivity = $_POST["activity"];
 $filterDateTime = $_POST["dateTime"];
 

@@ -69,37 +69,31 @@ $events = $dao->getAllEvents();
 </div>
 
 <div id="mainRight" class="main">
-	
-	<?php
-	foreach($events as $event) {
-		$sherpa = $dao->getUser($event["sherpa"]);
-		$activity = $dao->getActivity($event["activity"]);
-		echo
-			"	<a class='eventWrap' href='details.php?id={$event["id"]}'>
-        <div class='event'>
-            <div class='eventSherpa'>
-                <div class='eventConsole'>
-                    <div class='event{$event["console"]} consoleMini'>
-                        {$event["console"]}
-                    </div>
-                </div>
-                <p>{$sherpa["username"]}</p>
-            </div>
-            <div class='eventActivity'>
-                {$activity["name"]}
-            </div>
-            <div class='eventDateTime'>
-                ".date_format(date_create($event['start']),'M. d - g:i A')."
-            </div>
-            <div class='eventOther'>
-                <p>{$event["other"]}</p>
-            </div>
-        </div>
-    </a>";
-	}
-
-	?>
-
+	<?php foreach($events as $event) {
+	$sherpa = $dao->getUser($event["sherpa"]);
+	$activity = $dao->getActivity($event["activity"]); ?>
+	<a class="eventWrap" href="details.php?id=<?php echo $event["id"]; ?>">
+		<div class="event">
+			<div class="eventSherpa">
+				<div class="eventConsole">
+					<div class="event<?php echo $event["console"]; ?> consoleMini">
+						<?php echo $event["console"] ?>
+					</div>
+				</div>
+				<p><?php echo $sherpa["username"]; ?></p>
+			</div>
+			<div class="eventActivity">
+				<?php echo $activity["name"]; ?>
+			</div>
+			<div class="eventDateTime">
+				<?php echo date_format(date_create($event['start']),'M. d - g:i A'); ?>
+			</div>
+			<div class="eventOther">
+				<p><?php echo $event["other"]; ?></p>
+			</div>
+		</div>
+	</a>
+	<?php } ?>
 </div>
 
 <?php require_once "footer.php"; ?>

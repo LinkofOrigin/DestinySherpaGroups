@@ -25,7 +25,7 @@ function hideloginBack() {
 function passwordCheck(id1, id2, errorId) {
     var errorObj = $("#" + errorId);
     errorObj.show();
-
+    
     var val1 = $("#" + id1).val();
     var val2 = $("#" + id2).val();
     if (val1 === val2) {
@@ -60,9 +60,19 @@ function activateConsole(consoleButton, consoleSetID) {
             $(this).removeClass("active");
         });
         $(consoleButton).addClass("active");
-        $(consoleSetID).val($(consoleButton).text());
+        var buttonID = $(consoleButton).attr("id");
+        if (buttonID === "PS3") {
+            $(consoleSetID).val(1);
+        } else if (buttonID === "X360") {
+            $(consoleSetID).val(2);
+        } else if (buttonID === "PS4") {
+            $(consoleSetID).val(3);
+        } else if (buttonID === "X1") {
+            $(consoleSetID).val(4);
+        } else {
+            $(consoleSetID).val("");
+        }
     }
-
 }
 
 function activateActivity(activityButton, activitySetID) {
@@ -98,13 +108,13 @@ function activateActivity(activityButton, activitySetID) {
 
 $(document).ready(function () {
     $("#login").on("click", toggleloginBack);
-    $("#newUserForm").submit(function() {
+    $("#newUserForm").submit(function () {
         return passwordCheck("newPassword1", "newPassword2", "newUserError");
     });
-    $("#newPassword1").on("keyup", function() {
+    $("#newPassword1").on("keyup", function () {
         passwordCheck("newPassword1", "newPassword2", "newUserError");
     });
-    $("#newPassword2").on("keyup", function() {
+    $("#newPassword2").on("keyup", function () {
         passwordCheck("newPassword1", "newPassword2", "newUserError");
     });
 });

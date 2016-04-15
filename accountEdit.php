@@ -15,6 +15,17 @@ $username = $userRow["username"];
 $password = $userRow["password"];
 
 $console = $_POST["accountConsole"];
+if($console === "1") {
+	$console = "PS3";
+} else if ($console === "2") {
+	$console = "X360";
+} else if ($console === "3") {
+	$console = "PS4";
+} else if ($console === "4") {
+	$console = "X1";
+} else {
+	$console = "ERR";
+}
 $about = $_POST["accountAbout"];
 $password = $_POST["accountCurrPass"];
 $newPassword = $_POST["accountNewPass1"];

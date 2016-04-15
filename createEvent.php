@@ -9,6 +9,17 @@ $row = $dao->getLogin();
 
 $sherpa = $dao->getUser($row["user_id"]);
 $createConsole = $_POST["createConsole"];
+if($createConsole === "1") {
+	$createConsole = "PS3";
+} else if ($createConsole === "2") {
+	$createConsole = "X360";
+} else if ($createConsole === "3") {
+	$createConsole = "PS4";
+} else if ($createConsole === "4") {
+	$createConsole = "X1";
+} else {
+	$createConsole = "ERR";
+}
 $createActivity = $_POST["createActivity"];
 $createDateTime = $_POST["createDate"] . " " . $_POST["createTime"];
 $createOther = $_POST["createOther"];
