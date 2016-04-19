@@ -14,7 +14,7 @@
     float: right;
     background-color: #607D8B;
     text-align: center;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 /* Main Left */
