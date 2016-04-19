@@ -143,6 +143,11 @@ header {
     background: #455A64;
 }
 
+.headerButton.activePage {
+    background: #ECEFF1;
+    color: black;
+}
+
 #loginDivider {
     display: inline-block;
     width: 2px;
