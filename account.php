@@ -2,10 +2,11 @@
 <head>
 	<title>Account - Destiny Sherpa Groups</title>
 	<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
-	<link href='https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Mono' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Mono' rel='stylesheet'
+	      type='text/css'>
 	<link rel="stylesheet" href="css/theme.css">
 	<link rel="stylesheet" href="css/account.css">
-
+	
 	<script src="js/jquery.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/account.js"></script>
@@ -28,10 +29,32 @@ $userData = $dao->getUser($row["user_id"]);
 
 $user = new User($userData["username"]);
 
-$X1 = $userData["console"] === "X1" ? "active" : "";
-$X360 = $userData["console"] === "X360" ? "active" : "";
-$PS3 = $userData["console"] === "PS3" ? "active" : "";
-$PS4 = $userData["console"] === "PS4" ? "active" : "";
+$PS3 = $userData["console"] === "PS3" ? " active" : "";
+$X360 = $userData["console"] === "X360" ? " active" : "";
+$PS4 = $userData["console"] === "PS4" ? " active" : "";
+$X1 = $userData["console"] === "X1" ? " active" : "";
+
+if (isset($_SESSION["account_updateFail"]) && !empty($_SESSION["account_updateFail"])) {
+	$PS3 = "";
+	$X360 = "";
+	$PS4 = "";
+	$X1 = "";
+	if ($_SESSION["account_updateConsole"] === 1) {
+		$PS3 = " active";
+	} else if ($_SESSION["account_updateConsole"] === 2) {
+		$X360 = " active";
+	} else if ($_SESSION["account_updateConsole"] === 3) {
+		$PS4 = " active";
+	} else if ($_SESSION["account_updateConsole"] === 4) {
+		$X1 = " active";
+	}
+	
+	$userData["about"] = $_SESSION["account_updateAbout"];
+	
+	unset($_SESSION["account_updateFail"]);
+	unset($_SESSION["account_updateConsole"]);
+	unset($_SESSION["account_updateAbout"]);
+}
 
 ?>
 <body>
@@ -45,24 +68,24 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
 
 <div id="accountContents">
 	<form id="accountForm" name="accountForm" method="post" action="accountEdit.php">
-
+		
 		<div id="left" class="column">
 			<h3>Default Console</h3>
 			<div id="consoleButtonWrap">
-				<button type="button" id="PS3" class="console <?php echo $PS3; ?>">PS3</button>
-				<button type="button" id="X360" class="console <?php echo $X360; ?>">X360</button>
-				<button type="button" id="PS4" class="console <?php echo $PS4; ?>">PS4</button>
-				<button type="button" id="X1" class="console <?php echo $X1; ?>">X1</button>
+				<button type="button" id="PS3" class="console<?php echo $PS3; ?>">PS3</button>
+				<button type="button" id="X360" class="console<?php echo $X360; ?>">X360</button>
+				<button type="button" id="PS4" class="console<?php echo $PS4; ?>">PS4</button>
+				<button type="button" id="X1" class="console<?php echo $X1; ?>">X1</button>
 			</div>
 			<input type="hidden" name="accountConsole" id="accountConsole" value="<?php echo $userData["console"]; ?>">
 		</div>
-
+		
 		<div id="middle" class="column">
 			<h3>Info about yourself</h3>
             <textarea id="accountAbout" name="accountAbout"
-                      title="Share a little about yourself"><?php echo $userData["about"]; ?></textarea>
+                      title="Share a little about yourself"><?php echo htmlspecialchars($userData["about"]); ?></textarea>
 		</div>
-
+		
 		<div id="right" class="column">
 			<h3>Password Change</h3>
 			<div id="passwordWrap">
@@ -84,12 +107,12 @@ $PS4 = $userData["console"] === "PS4" ? "active" : "";
 				</label>
 				<p id="accountPassError">Passwords don't match!</p>
 			</div>
-
+			
 			<div>
 				<input id="accountSubmit" type="submit" title="Submit" value="Save Changes">
 			</div>
 		</div>
-
+	
 	</form>
 </div>
 

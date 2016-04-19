@@ -10,12 +10,12 @@
 .wrapper {
     width: 33.3%;
     float: left;
-    text-align: center;    
+    text-align: center;
 }
 
 #consoleButtonWrap {
     display: inline-block;
-    margin: 20px auto 0 auto ;
+    margin: 20px auto 0 auto;
 }
 
 #activityWrap > div {
@@ -53,6 +53,7 @@
 #createError {
     display: none;
     position: relative;
+    text-align: center;
     left: 50%;
     transform: translateX(-50%);
     background-color: #546E7A;

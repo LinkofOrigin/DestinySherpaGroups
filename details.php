@@ -2,10 +2,11 @@
 <head>
 	<title>Event Details - Destiny Sherpa Groups</title>
 	<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
-	<link href='https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Mono' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Mono' rel='stylesheet'
+	      type='text/css'>
 	<link rel="stylesheet" href="css/theme.css">
 	<link rel="stylesheet" href="css/details.css">
-
+	
 	<script src="js/jquery.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/details.js"></script>
@@ -30,7 +31,7 @@ $sherpaName = $sherpa["username"];
 $sherpaAbout = $sherpa["about"];
 $console = $event["console"];
 $activityName = $activity["name"];
-$eventStart = date_format(date_create($event['start']),'M. d - g:i A');
+$eventStart = date_format(date_create($event['start']), 'M. d - g:i A');
 $eventOther = $event["other"];
 
 $open = "- Open -";
@@ -80,7 +81,7 @@ if ($guardians[6] !== $open) {
 
 <div class="h2Wrap">
 	<h2>
-		<?php echo $sherpaName; ?>
+		<?php echo htmlspecialchars($sherpaName); ?>
 	</h2>
 	<?php if ($loggedInUser["user_id"] === $sherpa["id"]) { ?>
 		<form id="deleteEventForm" name="deleteEventForm" method="post"
@@ -88,52 +89,52 @@ if ($guardians[6] !== $open) {
 			<button id="deleteEvent">Delete this event</button>
 		</form>
 	<?php } ?>
-	
+
 </div>
 
 <div id="detailBody">
-
+	
 	<div id="detailContent">
-
+		
 		<div id="detailLeft">
 			<div id="aboutSherpa">
-				<h3>About - <?php echo $sherpaName; ?></h3>
+				<h3>About - <?php echo htmlspecialchars($sherpaName); ?></h3>
 			</div>
 			<p id="sherpaInfo">
-				<?php echo $sherpaAbout; ?>
+				<?php echo htmlspecialchars($sherpaAbout); ?>
 			</p>
 		</div>
-
+		
 		<div id="detailMiddle">
 			<div id="activity">
-				<h3><?php echo $activityName; ?></h3>
+				<h3><?php echo htmlspecialchars($activityName); ?></h3>
 			</div>
 			<div id="dateTime">
-				<h3><?php echo $eventStart; ?></h3>
+				<h3><?php echo htmlspecialchars($eventStart); ?></h3>
 			</div>
 			<p id="eventInfo">
-				<?php echo $eventOther; ?>
+				<?php echo htmlspecialchars($eventOther); ?>
 			</p>
 		</div>
-
+		
 		<div id="detailRight">
 			<div id="guardians">
 				<h3>Guardians</h3>
 			</div>
 			<div id="guardianList">
-				<p id="guard1"><?php echo $guardians[1]; ?></p>
-				<p id="guard2"><?php echo $guardians[2]; ?></p>
-				<p id="guard3"><?php echo $guardians[3]; ?></p>
-				<p id="guard4"><?php echo $guardians[4]; ?></p>
-				<p id="guard5"><?php echo $guardians[5]; ?></p>
-				<p id="guard6"><?php echo $guardians[6]; ?></p>
+				<p id="guard1"><?php echo htmlspecialchars($guardians[1]); ?></p>
+				<p id="guard2"><?php echo htmlspecialchars($guardians[2]); ?></p>
+				<p id="guard3"><?php echo htmlspecialchars($guardians[3]); ?></p>
+				<p id="guard4"><?php echo htmlspecialchars($guardians[4]); ?></p>
+				<p id="guard5"><?php echo htmlspecialchars($guardians[5]); ?></p>
+				<p id="guard6"><?php echo htmlspecialchars($guardians[6]); ?></p>
 			</div>
 			<form id="joinGroupForm" name="joinGroupForm" method="POST"
 			      action="joingroup.php?id=<?php echo $_GET["id"]; ?>">
 				<button id="joinGroup" type="submit"><?php echo $joinText; ?></button>
 			</form>
 		</div>
-
+	
 	</div>
 
 </div>

@@ -20,6 +20,12 @@ if (isset($_POST["loginUsername"])) {
 	}
 } else if (isset($_POST["newUsername"])) {
 	$username = $_POST["newUsername"];
+	if ($_POST["newPassword1"] !== $_POST["newPassword2"]) {
+		$_SESSION["login_createfail"] = "Your passwords didn't match!";
+		$_SESSION["login_createUsername"] = $username;
+		header("Location: {$_GET["redirect"]}");
+		exit();
+	}
 	$password = $_POST["newPassword1"];
 	$user = new User($username, $password);
 	if ($user->createUser()) {

@@ -5,28 +5,35 @@ $(document).ready(function () {
 	$(".activity").on("click", function () {
 		activateActivity(this, "#createActivity");
 	});
+	
 	$("#createEventForm").on("submit", function () {
 		var createError = $("#createError");
+		createError.text("");
+		var errorMsgs = [];
 		if ($("#createConsole").val() === "") {
-			createError.text("You must select a console!");
-			createError.css("display", "inline-block");
-			return false;
+			errorMsgs.push("You must select a console!");
 		}
 		if ($("#createActivity").val() === "") {
-			createError.text("You must select an activity!");
-			createError.css("display", "inline-block");
-			return false;
+			errorMsgs.push("You must select an activity!");
 		}
 		if ($("#createDate").val() === "") {
-			createError.text("You must select a date!");
-			createError.css("display", "inline-block");
-			return false;
+			errorMsgs.push("You must select a date!");
 		}
 		if ($("#createTime").val() === "") {
-			createError.text("You must select a time!");
+			errorMsgs.push("You must select a time!");
+		}
+		
+		if (errorMsgs.length !== 0) {
+			errorMsgs.forEach(function (msg) {
+				createError.append(msg);
+				if (errorMsgs[errorMsgs.indexOf(msg) + 1]) {
+					createError.append("<br>");
+				}
+			});
 			createError.css("display", "inline-block");
 			return false;
 		}
+		
 		createError.text("JOHN CENA!");
 		createError.hide();
 		return true;
