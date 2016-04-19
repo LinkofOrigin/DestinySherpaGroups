@@ -4,6 +4,8 @@ session_start();
 require_once "Dao.php";
 require_once "User.php";
 
+date_default_timezone_set("UTC");
+
 $dao = new Dao();
 $row = $dao->getLogin();
 if (!$row) {

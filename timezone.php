@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("UTC");
+
 $timezone = "";
 if (isset($_SESSION["timezone"]) && !empty($_SESSION["timezone"])) {
 	$timezone = $_SESSION["timezone"];

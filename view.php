@@ -14,10 +14,12 @@
 </head>
 <?php
 session_start();
-//include "timezone.php";
+include "timezone.php";
 
 require_once "Dao.php";
 $here = "view.php";
+
+date_default_timezone_set("UTC");
 
 $dao = new Dao();
 

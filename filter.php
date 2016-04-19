@@ -3,6 +3,8 @@
 require_once "Dao.php";
 $dao = new Dao();
 
+date_default_timezone_set("UTC");
+
 $filterConsole = $_POST["console"];
 if ($filterConsole === "1") {
 	$filterConsole = "PS3";

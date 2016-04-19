@@ -13,11 +13,13 @@
 </head>
 <?php
 session_start();
-//include "timezone.php";
+include "timezone.php";
 
 require_once "Dao.php";
 require_once "User.php";
 $here = "index.php";
+
+date_default_timezone_set("UTC");
 
 $dao = new Dao();
 $row = $dao->getLogin();

@@ -1,4 +1,6 @@
-<?php ?>
+<?php
+date_default_timezone_set("UTC");
+?>
 
 <footer>
     <p id="disclaimer">Disclaimer: Destiny Sherpa Groups is not affiliated with or endorsed by Bungie.</p>

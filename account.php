@@ -18,6 +18,8 @@ require_once "Dao.php";
 require_once "User.php";
 $here = "account.php";
 
+date_default_timezone_set("UTC");
+
 $dao = new Dao();
 $row = $dao->getLogin();
 

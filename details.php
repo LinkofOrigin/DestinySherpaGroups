@@ -14,7 +14,9 @@
 </head>
 <?php
 session_start();
-//include "timezone.php";
+include "timezone.php";
+
+date_default_timezone_set("UTC");
 
 require_once "Dao.php";
 $here = "details.php?id={$_GET["id"]}";

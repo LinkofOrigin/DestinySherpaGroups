@@ -6,6 +6,7 @@
     min-height: 80%;
     background-color: #607D8B;
     padding: 30px;
+    overflow: hidden;
 }
 
 .eventWrap {

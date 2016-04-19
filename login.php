@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+date_default_timezone_set("UTC");
+
 require_once "Dao.php";
 require_once "User.php";
 

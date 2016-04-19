@@ -2,6 +2,8 @@
 
 require_once "Dao.php";
 
+date_default_timezone_set("UTC");
+
 class User {
 
 	public $username;

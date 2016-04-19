@@ -3,6 +3,8 @@ require_once "Dao.php";
 $dao = new Dao();
 $row = $dao->getLogin();
 
+date_default_timezone_set("UTC");
+
 $accountActive = $here === "account.php" ? " activePage" : "";
 $viewActive = $here === "view.php" ? " activePage" : "";
 $createActive = $here === "create.php" ? " activePage" : "";
